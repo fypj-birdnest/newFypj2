@@ -1,15 +1,4 @@
 <resources>
     <string name="app_name">EBN</string>
 
-    <string name="authenticate_EBN">Authenticate EBN</string>
-    <string name="view_EBN_analytics">View EBN Analytics</string>
-    <string name="adminClickHere">If you are an admin, click HERE</string>
-
-    <string-array name="details_list">
-        <item>Toxic Level</item>
-        <item>Collagen Level</item>
-        <item>Acidity</item>
-        <item>Authenticity</item>
-        <item>Edible Saliva</item>
-    </string-array>
 </resources>

@@ -1,26 +1,32 @@
 package com.example.newtest
+
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.newtest.Class.QrString
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.functions.FirebaseFunctionsException
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_results.*
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import me.dm7.barcodescanner.zxing.ZXingScannerView.ResultHandler
+import java.io.Serializable
 
-
-
-class MainActivity : AppCompatActivity(),ResultHandler {
+class QrConsumer : AppCompatActivity(),ResultHandler {
     private val REQUEST_CAMERA = 1
     private var scannerView :ZXingScannerView? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         scannerView = ZXingScannerView(this)
         setContentView(scannerView)
         scannerView?.resumeCameraPreview (this)
@@ -31,13 +37,10 @@ class MainActivity : AppCompatActivity(),ResultHandler {
 
         if(!checkPermission())
             requestPermission()
-
-
     }
 
-
     private fun checkPermission() : Boolean{
-        return ContextCompat.checkSelfPermission(this@MainActivity,android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+        return ContextCompat.checkSelfPermission(this@QrConsumer,android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun requestPermission(){
@@ -67,9 +70,10 @@ class MainActivity : AppCompatActivity(),ResultHandler {
     override fun handleResult(p0: Result?) {
         var tmsg:String? = ""
         var check:Boolean? = false
-        val result = p0?.text
-        var test:String? = result
+        val tresult = p0?.text
+        var test:String? = tresult
 
+        Log.d("running","yes2")
         val db = FirebaseFirestore.getInstance()
 
         db.collection("qr").get().addOnSuccessListener { result ->
@@ -77,10 +81,19 @@ class MainActivity : AppCompatActivity(),ResultHandler {
                 Log.d("theResult", "${document.id} => ${document.data}")
                 if(test == document.getString("code")){
                     check = true
+                    var tQr = QrString(document.getString("code"),document.getString("brand"),document.getString("authen"),document.getString("collagen"),document.getString("saliva"),document.getString("acidity"),document.getString("country"))
+                    var intent = Intent(this,Results::class.java)
+                    intent.putExtra("tQr", tQr as Serializable)
+                    startActivity(intent)
                 }
             }
         }.addOnFailureListener { exception ->
             Log.w("GetDocError", "Error getting documents.", exception)
+        }
+        scannerView?.resumeCameraPreview(this@QrConsumer)
+
+        fun trueQr(theQr:QrString){
+
         }
 
 //        val builder = AlertDialog.Builder(this)
@@ -91,22 +104,6 @@ class MainActivity : AppCompatActivity(),ResultHandler {
 //        }
 
 
-            fun trueQr(){
-//                tmsg = "The QR Code exist in database"
-//                builder.setMessage(tmsg)
-//                val alert = builder.create()
-//                alert.show()
-                //intent to go to next page
-                val intent = Intent(this@MainActivity, Results::class.java)
-                startActivity(intent)
-            }
-
-            fun falseQr() {
-//                tmsg = "The QR Code is fake"
-//                builder.setMessage(tmsg)
-//                val alert = builder.create()
-//                alert.show()
-            }
 
     }
 }

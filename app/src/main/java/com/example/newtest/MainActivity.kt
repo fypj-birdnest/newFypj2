@@ -1,20 +1,12 @@
 package com.example.newtest
-
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Vibrator
 import android.util.Log
-import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.newtest.Class.QrString
-
-import com.example.newtest.Class.User
-import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 import me.dm7.barcodescanner.zxing.ZXingScannerView.ResultHandler
@@ -24,10 +16,6 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView.ResultHandler
 class MainActivity : AppCompatActivity(),ResultHandler {
     private val REQUEST_CAMERA = 1
     private var scannerView :ZXingScannerView? = null
-    lateinit var ref : DatabaseReference
-    private lateinit var database: DatabaseReference
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,22 +25,8 @@ class MainActivity : AppCompatActivity(),ResultHandler {
         setContentView(scannerView)
         scannerView?.resumeCameraPreview (this)
 
-        // this is the code for reading data
-        val ref = FirebaseDatabase.getInstance().getReference("qr")
-        ref.addValueEventListener(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("failed","dead")
-            }
 
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
-                    for(h in p0.children){
-                        val hero = h.getValue(QrString::class.java)?.tvalue
-                        Log.d("test hero", "$hero")
-                    }
-                }
-            }
-        })
+
 
 
         if(!checkPermission())
@@ -94,6 +68,20 @@ class MainActivity : AppCompatActivity(),ResultHandler {
         var tmsg:String? = ""
         var check:Boolean? = false
         val result = p0?.text
+        var test:String? = result
+
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("qr").get().addOnSuccessListener { result ->
+            for (document in result) {
+                Log.d("theResult", "${document.id} => ${document.data}")
+                if(test == document.getString("code")){
+                    check = true
+                }
+            }
+        }.addOnFailureListener { exception ->
+            Log.w("GetDocError", "Error getting documents.", exception)
+        }
 
 //        val builder = AlertDialog.Builder(this)
 //        builder.setTitle("Result")
@@ -103,30 +91,6 @@ class MainActivity : AppCompatActivity(),ResultHandler {
 //        }
 
 
-
-        val ref = FirebaseDatabase.getInstance().getReference("qr")
-        ref.addValueEventListener(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("failed","dead")
-            }
-
-            override fun onDataChange(p1: DataSnapshot) {
-                if(p1!!.exists()){
-                    for(h in p1.children){
-                        val hero = h.getValue(QrString::class.java)?.tvalue
-                        Log.d("test hero", "$hero")
-                        if(result == hero){
-                            check = true
-                        }
-                    }
-                }
-                if(check == true){
-                    trueQr()
-                }else{
-                    falseQr()
-                }
-
-            }
             fun trueQr(){
 //                tmsg = "The QR Code exist in database"
 //                builder.setMessage(tmsg)
@@ -137,13 +101,12 @@ class MainActivity : AppCompatActivity(),ResultHandler {
                 startActivity(intent)
             }
 
-            fun falseQr(){
+            fun falseQr() {
 //                tmsg = "The QR Code is fake"
 //                builder.setMessage(tmsg)
 //                val alert = builder.create()
 //                alert.show()
             }
-        })
 
     }
 }

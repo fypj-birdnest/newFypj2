@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
         <activity android:name=".Results">
+        </activity>
+        <activity android:name=".QrConsumer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

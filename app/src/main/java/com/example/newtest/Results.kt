@@ -33,7 +33,10 @@ class Results : AppCompatActivity(){
 
 
 
-
+        val data = hashMapOf(
+            "text" to text,
+            "push" to true
+        )
 
         firefunc.getHttpsCallable("brandState").call()
                 .addOnCompleteListener { task ->

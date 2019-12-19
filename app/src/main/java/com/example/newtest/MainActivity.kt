@@ -38,21 +38,6 @@ class MainActivity : AppCompatActivity(),ResultHandler {
         scannerView?.resumeCameraPreview (this)
 
         // this is the code for reading data
-        val ref = FirebaseDatabase.getInstance().getReference("qr")
-        ref.addValueEventListener(object:ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
-                Log.d("failed","dead")
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                if(p0!!.exists()){
-                    for(h in p0.children){
-                        val hero = h.getValue(QrString::class.java)?.tvalue
-                        Log.d("test hero", "$hero")
-                    }
-                }
-            }
-        })
 
 
         if(!checkPermission())

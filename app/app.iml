@@ -9,7 +9,7 @@
       </configuration>
     </facet>
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false" pureKotlinSourceFolders="C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\debug\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\debug\java;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\release\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\release\java;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\debugAndroidTest\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\debugUnitTest\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\qrcode (working)\newFypj\app\src\releaseUnitTest\kotlin">
+      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false" pureKotlinSourceFolders="C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\debug\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\debug\java;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\release\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\release\java;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\debugAndroidTest\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\debugUnitTest\kotlin;C:\Users\L31106.NYPSIT.000\Desktop\fypj(new git)\newFypj2\app\src\releaseUnitTest\kotlin">
         <compilerSettings>
           <option name="additionalArguments" value="-Xallow-no-source-files" />
         </compilerSettings>

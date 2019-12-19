@@ -47,11 +47,10 @@
                             android:layout_height="150dp"
                             android:layout_gravity="center" />
 
-                        <pl.droidsonroids.gif.GifImageView
+                        <ImageView
                             android:id="@+id/graph"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
-                            android:src="@drawable/loading"
                             android:layout_gravity="center"/>
                     </LinearLayout>
 

@@ -49,11 +49,12 @@
                             android:textStyle="bold"
                             android:textSize="120dp"/>
 
-                        <ImageView
+                        <pl.droidsonroids.gif.GifImageView
                             android:id="@+id/graph"
                             android:clickable="true"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
+                            android:src="@drawable/loading"
                             android:layout_gravity="center"/>
                     </LinearLayout>
 

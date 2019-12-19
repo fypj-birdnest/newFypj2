@@ -31,10 +31,6 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
         setContentView(scannerView)
         scannerView?.resumeCameraPreview (this)
 
-
-
-
-
         if(!checkPermission())
             requestPermission()
     }

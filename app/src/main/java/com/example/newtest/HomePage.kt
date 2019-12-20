@@ -13,7 +13,7 @@ class HomePage : AppCompatActivity(){
         setContentView(R.layout.activity_homepage)
 
         authenticate_EBN_cv.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, QrConsumer::class.java)
             startActivity(intent)
         }
 

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -85,6 +86,13 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
             }
         }.addOnFailureListener { exception ->
             Log.w("GetDocError", "Error getting documents.", exception)
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Result")
+            builder.setMessage("The QR code is invalid")
+            builder.setPositiveButton("OK") {dialog, which ->
+                scannerView?.resumeCameraPreview(this@QrConsumer)
+                startActivity(intent)
+            }
         }
         scannerView?.resumeCameraPreview(this@QrConsumer)
 

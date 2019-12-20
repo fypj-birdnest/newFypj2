@@ -4,6 +4,7 @@
     <string name="authenticate_EBN">Authenticate EBN</string>
     <string name="view_EBN_analytics">View EBN Analytics</string>
     <string name="adminClickHere">If you are an admin, click HERE</string>
+    <string name="viewAnalysisClick">Click here to view analysis>>></string>
 
     <string-array name="details_list">
         <item>Toxic Level</item>

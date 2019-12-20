@@ -13,12 +13,12 @@ class ViewAnalytics : AppCompatActivity(){
         setContentView(R.layout.activity_viewanalytics)
 
         analytics_trends_cv.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java) //yet to create page
+            val intent = Intent(this, Statistics::class.java) //goes to the dashboard
             startActivity(intent)
         }
 
         customization_cv.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java) //yet to create page
+            val intent = Intent(this, Customization::class.java) //goes to customization page
             startActivity(intent)
         }
 

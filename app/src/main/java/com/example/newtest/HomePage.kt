@@ -18,13 +18,13 @@ class HomePage : AppCompatActivity(){
         }
 
         view_EBN_analytics_cv.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java) //yet to create page
+            val intent = Intent(this, ViewAnalytics::class.java)
             startActivity(intent)
         }
 
         val clickHere = findViewById<TextView>(R.id.adminClick)
         clickHere.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java) //yet to create page
+            val intent = Intent(this, MainActivity::class.java) //yet to create admin page
             startActivity(intent)
 
         }

@@ -32,9 +32,6 @@ class Results : AppCompatActivity(){
         brandValue.text = tQr.brand
 
 
-
-
-
         firefunc.getHttpsCallable("brandState").call()
                 .addOnCompleteListener { task ->
                     if (!task.isSuccessful)

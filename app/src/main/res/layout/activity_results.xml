@@ -55,8 +55,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
                             android:src="@drawable/loading"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center">
+                        </pl.droidsonroids.gif.GifImageView>
+
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/viewAnalysis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:text="@string/viewAnalysisClick"
+                        android:layout_marginTop="5dp"
+                        android:clickable="true"
+                        >
+                    </TextView>
 
                     <!-- Scan Details -->
                     <com.google.android.material.card.MaterialCardView

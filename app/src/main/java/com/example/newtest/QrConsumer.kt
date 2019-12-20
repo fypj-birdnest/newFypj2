@@ -70,35 +70,38 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
         val tresult = p0?.text
         var test:String? = tresult
 
-        Log.d("running","yes2")
-        val db = FirebaseFirestore.getInstance()
 
-        db.collection("qr").get().addOnSuccessListener { result ->
-            for (document in result) {
-                Log.d("theResult", "${document.id} => ${document.data}")
-                if(test == document.getString("code")){
-                    check = true
-                    var tQr = QrString(document.getString("code"),document.getString("brand"),document.getString("authen"),document.getString("collagen"),document.getString("saliva"),document.getString("acidity"),document.getString("country"))
-                    var intent = Intent(this,Results::class.java)
-                    intent.putExtra("tQr", tQr as Serializable)
-                    startActivity(intent)
-                }
-            }
-        }.addOnFailureListener { exception ->
-            Log.w("GetDocError", "Error getting documents.", exception)
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Result")
-            builder.setMessage("The QR code is invalid")
-            builder.setPositiveButton("OK") {dialog, which ->
-                scannerView?.resumeCameraPreview(this@QrConsumer)
-                startActivity(intent)
-            }
-        }
-        scannerView?.resumeCameraPreview(this@QrConsumer)
+        var intent = Intent(this,Results::class.java)
+        intent.putExtra("tQr",test)
+        Log.d("runningQR",test)
+        startActivity(intent)
 
-        fun trueQr(theQr:QrString){
+//        val db = FirebaseFirestore.getInstance()
+//
+//        db.collection("qr").get().addOnSuccessListener { result ->
+//            for (document in result) {
+//                Log.d("theResult", "${document.id} => ${document.data}")
+//                if(test == document.getString("code")){
+//                    check = true
+//                    var tQr = QrString(document.getString("code"),document.getString("brand"),document.getString("authen"),document.getString("collagen"),document.getString("saliva"),document.getString("acidity"),document.getString("country"))
+//                    var intent = Intent(this,Results::class.java)
+//                    intent.putExtra("tQr", tQr as Serializable)
+//                    startActivity(intent)
+//                }
+//            }
+//        }.addOnFailureListener { exception ->
+//            Log.w("GetDocError", "Error getting documents.", exception)
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle("Result")
+//            builder.setMessage("The QR code is invalid")
+//            builder.setPositiveButton("OK") {dialog, which ->
+//                scannerView?.resumeCameraPreview(this@QrConsumer)
+//                startActivity(intent)
+//            }
+//        }
+        //scannerView?.resumeCameraPreview(this@QrConsumer)
 
-        }
+
 
 //        val builder = AlertDialog.Builder(this)
 //        builder.setTitle("Result")

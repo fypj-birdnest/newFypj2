@@ -66,32 +66,32 @@ class Results : AppCompatActivity(){
             "push" to true
         )
 
-//        firefunc.getHttpsCallable("brandState").call(data)
-//                .addOnCompleteListener { task ->
-//                    if (!task.isSuccessful)
-//                    {
-//                        db.collection("graphImages").get().addOnSuccessListener { result ->
-//                            for (document in result) {
-//                                //Log.d("theResult", "${document.id} => ${document.data}")
-//                                if("brandState5" == document.id){
-//                                    Picasso
-//                                        .get()
-//                                        .load(document.getString("url"))
-//                                        .into(graph)
-//                                }
-//                            }
-//                        }.addOnFailureListener { exception ->
-//                            Log.w("GetDocError", "Error getting documents.", exception)
-//                        }
-//
-//                        val e = task.exception
-//                        if (e is FirebaseFunctionsException)
-//                        {
-//                            Log.d("error in calling func", "Result3: " + e.code + e.details)
-//                        }
-//                    }
-//                    return@addOnCompleteListener
-//                }
+        firefunc.getHttpsCallable("brandState").call(data)
+                .addOnCompleteListener { task ->
+                    if (!task.isSuccessful)
+                    {
+                        db.collection("graphImages").get().addOnSuccessListener { result ->
+                            for (document in result) {
+                                //Log.d("theResult", "${document.id} => ${document.data}")
+                                if("brandState5" == document.id){
+                                    Picasso
+                                        .get()
+                                        .load(document.getString("url"))
+                                        .into(graph)
+                                }
+                            }
+                        }.addOnFailureListener { exception ->
+                            Log.w("GetDocError", "Error getting documents.", exception)
+                        }
+
+                        val e = task.exception
+                        if (e is FirebaseFunctionsException)
+                        {
+                            Log.d("error in calling func", "Result3: " + e.code + e.details)
+                        }
+                    }
+                    return@addOnCompleteListener
+                }
 
     }
 }

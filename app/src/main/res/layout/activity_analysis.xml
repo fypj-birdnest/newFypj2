@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:baselineAligned="false">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +37,7 @@
                 android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/graph1"
+                    android:id="@+id/results_analysis_graph"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_gravity="center"/>
@@ -47,7 +46,6 @@
         </androidx.cardview.widget.CardView>
 
     <!-- Bottom nav -->
-
     <include
         layout="@layout/bottom_nav"/>
 

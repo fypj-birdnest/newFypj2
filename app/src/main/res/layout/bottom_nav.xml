@@ -15,5 +15,4 @@
         app:itemTextColor="@color/colorWhite"
         app:menu="@menu/bottom_nav_menu"
         android:layout_gravity="bottom"/>
-
 </LinearLayout>

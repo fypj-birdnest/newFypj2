@@ -85,7 +85,8 @@
                                     android:textStyle="bold"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorBlack"
-                                    android:text="Brand: " />
+                                    android:text="Brand: "
+                                    />
 
                                 <TextView
                                     android:id="@+id/brandValue"

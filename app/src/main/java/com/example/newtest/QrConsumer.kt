@@ -30,7 +30,7 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
         super.onCreate(savedInstanceState)
         scannerView = ZXingScannerView(this)
         setContentView(scannerView)
-        //scannerView?.resumeCameraPreview (this)
+        scannerView?.resumeCameraPreview (this)
 
         if(!checkPermission())
             requestPermission()
@@ -46,9 +46,15 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
 
     override fun onResume(){
         super.onResume()
-        scannerView?.setResultHandler(this)
-        scannerView?.startCamera()
 
+        if(checkPermission()){
+            if(scannerView == null){
+                scannerView = ZXingScannerView(this)
+                setContentView(scannerView)
+            }
+            scannerView?.setResultHandler(this)
+            scannerView?.startCamera()
+        }
     }
 
     override fun onDestroy() {
@@ -59,21 +65,50 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
     }
 
     override fun handleResult(p0: Result?) {
-        val result = p0?.text
-//        val builder = AlertDialog.Builder(this)
-//        builder.setTitle("check tqr")
-//        builder.setMessage(result)
-//        builder.show()
+        var tmsg:String? = ""
+        var check:Boolean? = false
+        val tresult = p0?.text
+        var test:String? = tresult
+
 
         var intent = Intent(this,Results::class.java)
-        intent.putExtra("tQr",result)
-        if(result.isNullOrEmpty()){
-            Log.d("empty","the test is empty")
-        }else{
-            startActivity(intent)
-        }
-        scannerView?.resumeCameraPreview (this)
+        intent.putExtra("tQr",test)
+        Log.d("runningQR",test)
+        startActivity(intent)
 
+//        val db = FirebaseFirestore.getInstance()
+//
+//        db.collection("qr").get().addOnSuccessListener { result ->
+//            for (document in result) {
+//                Log.d("theResult", "${document.id} => ${document.data}")
+//                if(test == document.getString("code")){
+//                    check = true
+//                    var tQr = QrString(document.getString("code"),document.getString("brand"),document.getString("authen"),document.getString("collagen"),document.getString("saliva"),document.getString("acidity"),document.getString("country"))
+//                    var intent = Intent(this,Results::class.java)
+//                    intent.putExtra("tQr", tQr as Serializable)
+//                    startActivity(intent)
+//                }
+//            }
+//        }.addOnFailureListener { exception ->
+//            Log.w("GetDocError", "Error getting documents.", exception)
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle("Result")
+//            builder.setMessage("The QR code is invalid")
+//            builder.setPositiveButton("OK") {dialog, which ->
+//                scannerView?.resumeCameraPreview(this@QrConsumer)
+//                startActivity(intent)
+//            }
+//        }
+        //scannerView?.resumeCameraPreview(this@QrConsumer)
+
+
+
+//        val builder = AlertDialog.Builder(this)
+//        builder.setTitle("Result")
+//        builder.setPositiveButton("OK") {dialog, which ->
+//            scannerView?.resumeCameraPreview(this@MainActivity)
+//            startActivity(intent)
+//        }
 
 
 

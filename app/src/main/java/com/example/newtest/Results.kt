@@ -17,6 +17,7 @@ import java.io.Serializable
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.TextView
 import com.google.gson.Gson
 
 
@@ -27,6 +28,7 @@ class Results : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
+
         val db = FirebaseFirestore.getInstance()
         val firefunc = FirebaseFunctions.getInstance()
 
@@ -36,20 +38,52 @@ class Results : AppCompatActivity(){
 //        countryOriginValue.text = tQr.country
 //        acidityLevelValue.text = tQr.acidity
 
-        val tQr = intent.getStringExtra("tQr")
-        Log.d("the tqr",tQr)
-        brandValue.text = tQr
+
 
         db.collection("qr").get().addOnSuccessListener { result ->
+
+            val qrcode = intent.getStringExtra("tQr")!!
             for (document in result) {
-//                Log.d("theResult", "${document.id} => ${document.data}")
-                if(tQr == document.getString("code")){
+                Log.d("another",qrcode)
+                Log.d("theResult", "${document.id} => ${document.data}")
+                if(qrcode == document.getString("code")){
                     brandValue.text = document.getString("brand")
                     countryOriginValue.text = document.getString("country")
                     acidityLevelValue.text = document.getString("acidity")
-
                     //insert graph code here
 
+                    val data = hashMapOf(
+                        "text"  to document.getString("brand"),
+                        "push" to true
+                    )
+
+                    firefunc.getHttpsCallable("brandQuality5").call(data)
+                        .addOnCompleteListener { task ->
+
+                            if (!task.isSuccessful)
+                            {
+                                db.collection("graphImages").get().addOnSuccessListener { result ->
+                                    for (document in result) {
+                                        //Log.d("theResult", "${document.id} => ${document.data}")
+                                        if("brandQuality5" == document.id){
+                                            Picasso
+                                                .get()
+                                                .load(document.getString("url"))
+                                                .into(graph)
+                                        }
+                                    }
+                                }.addOnFailureListener { exception ->
+                                    Log.w("GetDocError", "Error getting documents.", exception)
+                                }
+
+                                val e = task.exception
+                                if (e is FirebaseFunctionsException)
+                                {
+                                    Log.d("error in calling func", "Result3: " + e.code + e.details)
+                                }
+                            }
+                            return@addOnCompleteListener
+                        }
 
 
                 }
@@ -59,38 +93,19 @@ class Results : AppCompatActivity(){
             Log.w("GetDocError", "Error getting documents.", exception)
         }
 
-        val text:String = "text"
-        val data = hashMapOf(
-            "text"  to text,
-            "push" to true
-        )
 
-        firefunc.getHttpsCallable("brandState").call(data)
-                .addOnCompleteListener { task ->
-                    if (!task.isSuccessful)
-                    {
-                        db.collection("graphImages").get().addOnSuccessListener { result ->
-                            for (document in result) {
-                                //Log.d("theResult", "${document.id} => ${document.data}")
-                                if("brandState5" == document.id){
-                                    Picasso
-                                        .get()
-                                        .load(document.getString("url"))
-                                        .into(graph)
-                                }
-                            }
-                        }.addOnFailureListener { exception ->
-                            Log.w("GetDocError", "Error getting documents.", exception)
-                        }
 
-                        val e = task.exception
-                        if (e is FirebaseFunctionsException)
-                        {
-                            Log.d("error in calling func", "Result3: " + e.code + e.details)
-                        }
-                    }
-                    return@addOnCompleteListener
-                }
+
+
+
+
+        val clickHere = findViewById<TextView>(R.id.viewAnalysis)
+        clickHere.setOnClickListener {
+            var intent = Intent(this,Analysis::class.java)
+            intent.putExtra("tQr",brandValue.text)
+            startActivity(intent)
+        }
+
 
     }
 }

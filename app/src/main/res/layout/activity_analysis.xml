@@ -36,11 +36,15 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/results_analysis_graph"
+
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/grapha"
+                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_gravity="center"/>
+                    android:src="@drawable/loading"
+                    android:layout_gravity="center">
+                </pl.droidsonroids.gif.GifImageView>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

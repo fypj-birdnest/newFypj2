@@ -3,7 +3,9 @@ package com.example.newtest
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_analysis.*
 
 class Analysis : AppCompatActivity(){

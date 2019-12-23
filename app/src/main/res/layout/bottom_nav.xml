@@ -14,8 +14,5 @@
         app:itemIconTint="@color/colorBlack"
         app:itemTextColor="@color/colorWhite"
         app:menu="@menu/bottom_nav_menu"
-        android:layout_gravity="bottom"
-        android:windowSoftInputMode="adjustNothing"
-
-        />
+        android:layout_gravity="bottom"/>
 </LinearLayout>

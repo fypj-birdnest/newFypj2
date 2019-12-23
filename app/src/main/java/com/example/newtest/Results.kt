@@ -27,7 +27,6 @@ class Results : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
 
-
         val db = FirebaseFirestore.getInstance()
         val firefunc = FirebaseFunctions.getInstance()
 

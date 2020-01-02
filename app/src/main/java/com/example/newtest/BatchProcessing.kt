@@ -172,11 +172,14 @@ class BatchProcessing : AppCompatActivity(){
         val db = FirebaseFirestore.getInstance()
         val batch_id = findViewById<TextView>(R.id.batch_id_processing_value)
         val brand_name_value = findViewById<EditText>(R.id.brand_name)
+        val no_of_product_value = findViewById<TextView>(R.id.no_of_products)
         val country_of_origin_value = findViewById<Spinner>(R.id.country_spinner)
         val dateTv_value = findViewById<TextView>(R.id.dateTv)
 
+
         val batchid = batch_id.text.toString()
         val brandname = brand_name_value.text.toString()
+        val noofproduct = no_of_product_value.text.toString()
         val country = country_of_origin_value.getSelectedItem().toString()
         val dateM = sdate
 
@@ -189,6 +192,7 @@ class BatchProcessing : AppCompatActivity(){
             try{
                 val items = hashMapOf( //does it exist in db
                         "brandname" to brandname,
+                        "noOfproduct" to noofproduct,
                         "countryofOrigin" to country,
                         "date" to dateM
 

@@ -174,14 +174,14 @@ class BatchProcessing : AppCompatActivity(){
         val brand_name_value = findViewById<EditText>(R.id.brand_name)
         val country_of_origin_value = findViewById<Spinner>(R.id.country_spinner)
         val dateTv_value = findViewById<TextView>(R.id.dateTv)
-        val prodNo_value = findViewById<EditText>(R.id.productNo)
+        //val prodNo_value = findViewById<EditText>(R.id.productNo)
 
         val batchid = batch_id.text.toString()
         val brandname = brand_name_value.text.toString()
         val country = country_of_origin_value.getSelectedItem().toString()
         val dateM = sdate
-        var prodNo = prodNo_value.text.toString()
-        var newProd = prodNo.toInt()
+        //var prodNo = prodNo_value.text.toString()
+        var newProd = 3
 
         Log.d("woop",brandname)
 
@@ -192,7 +192,7 @@ class BatchProcessing : AppCompatActivity(){
             try{
 
                 val items = hashMapOf( //rmb to include user
-                        "batchId" to batch,
+                        "batchId" to batch_id,
                         "brand" to brandname,
                         "country" to country,
                         "date" to "placeholderDate", //this is the scanned date for the batch
@@ -213,7 +213,7 @@ class BatchProcessing : AppCompatActivity(){
                         var nqr = hashMapOf(
                                 "code" to code,
                                 "status" to "inactive",
-                                "batchId" to batch,
+                                "batchId" to batch_id,
                                 "brand" to brandname,
                                 "country" to country,
                                 "date" to "placeholderD"
@@ -228,7 +228,7 @@ class BatchProcessing : AppCompatActivity(){
 
 
                     var intent = Intent(this,BatchDetails::class.java)
-                    intent.putExtra("batchId",batch)
+                    intent.putExtra("batchId",batchid)
                     intent.putExtra("country",country)
                     intent.putExtra("brand",brandname)
                     startActivity(intent)

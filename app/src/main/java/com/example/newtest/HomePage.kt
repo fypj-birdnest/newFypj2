@@ -24,7 +24,7 @@ class HomePage : AppCompatActivity(){
 
         val clickHere = findViewById<TextView>(R.id.adminClick)
         clickHere.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java) //yet to create admin page
+            val intent = Intent(this, BatchProcessing::class.java) //yet to create admin page
             startActivity(intent)
 
         }

@@ -2,6 +2,7 @@ package com.example.newtest
 
 import android.app.DatePickerDialog
 import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -25,8 +26,6 @@ class BatchProcessing : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_batchprocessing)
-
-        val db = FirebaseFirestore.getInstance()
 
         val store = findViewById<Button>(R.id.start)
         store.setOnClickListener {
@@ -64,9 +63,6 @@ class BatchProcessing : AppCompatActivity(){
         countries.add(0, "Please select country")
 
         Collections.sort(countries)
-        for (country in countries) {
-            println(country)
-        }
 
         val countryAdapter = ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, countries)
@@ -82,11 +78,14 @@ class BatchProcessing : AppCompatActivity(){
         val brand_name_value = findViewById<EditText>(R.id.brand_name)
         val country_of_origin_value = findViewById<Spinner>(R.id.country_spinner)
         val dateTv_value = findViewById<TextView>(R.id.dateTv)
+        val prodNo_value = findViewById<EditText>(R.id.productNo)
 
         val batch = batch_id_value.text.toString()
         val brandname = brand_name_value.text.toString()
         val country = country_of_origin_value.getSelectedItem().toString()
         val dateM = sdate
+        var prodNo = prodNo_value.text.toString()
+        var newProd = prodNo.toInt()
 
         Log.d("woop",brandname)
 
@@ -95,18 +94,53 @@ class BatchProcessing : AppCompatActivity(){
 
         if(!batch.isEmpty() && !brandname.isEmpty()  && !pickDate.isEmpty()){
             try{
-                val items = hashMapOf(
-                        "batchId" to batch, //does it exist in db
-                        "brandname" to brandname,
-                        "countryofOrigin" to country,
-                        "date" to dateM
+
+                val items = hashMapOf( //rmb to include user
+                        "batchId" to batch,
+                        "brand" to brandname,
+                        "country" to country,
+                        "date" to "placeholderDate", //this is the scanned date for the batch
+                        "productNo" to newProd
 
                 )
-                db.collection("batchProcessing").document(batch).set(items).addOnSuccessListener{
+                db.collection("batchProcessing").document().set(items).addOnSuccessListener{
                     void: Void? -> Toast.makeText(this, "Succeess", Toast.LENGTH_LONG).show()
+
+
+                    for(i in 1..newProd){
+                        //generate the qr code
+                        val chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        var code = ""
+                        for (i in 0..10) {
+                            code += chars[Math.floor(Math.random() * chars.length).toInt()]
+                        }
+                        var nqr = hashMapOf(
+                                "code" to code,
+                                "status" to "inactive",
+                                "batchId" to batch,
+                                "brand" to brandname,
+                                "country" to country,
+                                "date" to "placeholderD"
+
+                        )
+                        db.collection("qr").document().set(nqr).addOnSuccessListener{
+
+                        }.addOnFailureListener {
+                            exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+
+                    var intent = Intent(this,BatchDetails::class.java)
+                    intent.putExtra("batchId",batch)
+                    intent.putExtra("country",country)
+                    intent.putExtra("brand",brandname)
+                    startActivity(intent)
                 }.addOnFailureListener {
                     exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                 }
+
+
             }
 
             catch(e:Exception){

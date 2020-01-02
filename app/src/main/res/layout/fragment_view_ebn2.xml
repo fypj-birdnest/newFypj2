@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ViewEBNFragment"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +28,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_margin="10dp"
-            android:id="@+id/authenticate_EBN_cv"
+            android:id="@+id/analytics_trends_cv"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -33,11 +40,11 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/ic_photo_camera_black_24dp"
+                    android:src="@drawable/ic_show_chart_black_24dp"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:padding="10dp"
-                    android:background="@drawable/circlebackgroundblue"
+                    android:background="@drawable/circlebackgroundorange"
                     />
 
                 <View
@@ -51,7 +58,7 @@
                 <TextView
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:text="Authenticate EBN"
+                    android:text="Analytics Trends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -64,7 +71,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_margin="10dp"
-            android:id="@+id/view_EBN_analytics_cv"
+            android:id="@+id/customization_cv"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -76,11 +83,12 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/ic_insert_chart_black_24dp"
+                    android:src="@drawable/ic_transform_black_24dp"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:padding="10dp"
-                    android:background="@drawable/circlebackgroundgreen"
+                    android:background="@drawable/circlebackgroundpurple"
+
                     />
 
                 <View
@@ -94,7 +102,7 @@
                 <TextView
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:text="@string/view_EBN_analytics"
+                    android:text="Customization"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -105,19 +113,11 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/adminClick"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:text="@string/adminClickHere"
-        android:layout_marginTop="50dp"
-        android:clickable="true"
-        >
-    </TextView>
-
-<!--    <include-->
-<!--        layout="@menu/bottom_nav_menu"/>-->
-
 </LinearLayout>
+    <include
+        layout="@layout/bottom_nav"/>
+
+</RelativeLayout>
+
+
+

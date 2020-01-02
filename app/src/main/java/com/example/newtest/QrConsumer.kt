@@ -4,6 +4,9 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -25,6 +28,39 @@ import java.io.Serializable
 class QrConsumer : AppCompatActivity(),ResultHandler {
     private val REQUEST_CAMERA = 1
     private var scannerView :ZXingScannerView? = null
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.bottom_nav_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.authenticate_EBN -> {
+                authenticate_EBN()
+                true
+            }
+            R.id.EBN_analytics -> {
+                EBN_analytics()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun authenticate_EBN(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    fun EBN_analytics(){
+        val intent = Intent(this, ViewAnalytics::class.java)
+        startActivity(intent)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

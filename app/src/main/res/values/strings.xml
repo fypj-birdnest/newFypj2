@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">EBN</string>
-
     <string name="authenticate_EBN">Authenticate EBN</string>
     <string name="view_EBN_analytics">View EBN Analytics</string>
     <string name="adminClickHere">If you are an admin, click HERE</string>
@@ -13,18 +12,66 @@
         <item>Edible Saliva</item>
     </string-array>
 
-    <string-array name="x_list">
-        <item>Toxic Level</item>
-        <item>Collagen Level</item>
+    <string-array name="y_list">
         <item>Acidity</item>
-        <item>Authenticity</item>
+        <item>Collagen Level</item>
         <item>Edible Saliva</item>
     </string-array>
 
-    <string-array name="y_list">
-        <item>Country</item>
-        <item>Date</item>
-        <item>Brand</item>
+<!--    <string-array name="x_list">-->
+<!--        <item>Country</item>-->
+<!--        <item>Date</item>-->
+<!--        <item>Brand</item>-->
+<!--    </string-array>-->
+
+    <string-array name="month_list">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
     </string-array>
+
+    <string-array name="year_list">
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
+        <item>2018</item>
+        <item>2019</item>
+    </string-array>
+
+    <string-array name="countries_list">
+        <item>Canada</item>
+        <item>China</item>
+        <item>Hong Kong</item>
+        <item>Indonesia</item>
+        <item>Malaysia</item>
+        <item>Philippines</item>
+        <item>Taiwan</item>
+        <item>Thailand</item>
+        <item>United States</item>
+    </string-array>
+
+    <string-array name="authenticity_list">
+        <item>real</item>
+        <item>fake</item>
+        <item>adulterated</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

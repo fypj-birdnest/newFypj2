@@ -36,14 +36,15 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/results"
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
+                            android:layout_height="155dp"
                             android:gravity="center"
                             android:text="REAL"
                             android:textStyle="bold"
@@ -53,39 +54,53 @@
                             android:id="@+id/graph"
                             android:clickable="true"
                             android:layout_width="match_parent"
-                            android:layout_height="150dp"
+                            android:layout_height="155dp"
                             android:src="@drawable/loading"
                             android:layout_gravity="center">
                         </pl.droidsonroids.gif.GifImageView>
 
                     </LinearLayout>
 
-                    <TextView
+                    <Button
                         android:id="@+id/viewAnalysis"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:gravity="right"
-                        android:layout_marginRight="5dp"
-                        android:text="@string/viewAnalysisClick"
-                        android:layout_marginTop="5dp"
-                        android:clickable="true"
-                        >
-                    </TextView>
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorPrimary"
+                        android:text="View Analysis"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="10sp" />
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/viewAnalysis"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="bottom"-->
+<!--                        android:gravity="right"-->
+<!--                        android:layout_marginRight="5dp"-->
+<!--                        android:text="@string/viewAnalysisClick"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:clickable="true"-->
+<!--                        >-->
+<!--                    </TextView>-->
 
                     <!-- Scan Detail -->
-                    <com.google.android.material.card.MaterialCardView
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        app:cardElevation="4dp"
+                        android:layout_height="180dp"
                         app:cardBackgroundColor="@color/colorGrey"
-                        app:cardPreventCornerOverlap="false">
+                        app:cardPreventCornerOverlap="false"
+                        android:layout_marginTop="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="15dp"
+                            android:layout_margin="20dp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -120,7 +135,7 @@
                                 android:id="@+id/space1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="10sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/colorBlack" />
 
                             <LinearLayout
@@ -153,7 +168,7 @@
                                 android:id="@+id/space2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="10sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/colorBlack"/>
 
                             <LinearLayout
@@ -186,7 +201,7 @@
                                 android:id="@+id/space3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="10sp"
+                                android:textSize="13sp"
                                 android:textColor="@color/colorBlack"/>
 
 
@@ -217,11 +232,11 @@
 
                         </LinearLayout>
 
-                    </com.google.android.material.card.MaterialCardView>
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Bottom nav -->
-                    <include
-                        layout="@layout/bottom_nav"/>
+<!--                    <include-->
+<!--                        layout="@menu/bottom_nav_menu"/>-->
 
                 </LinearLayout>
 

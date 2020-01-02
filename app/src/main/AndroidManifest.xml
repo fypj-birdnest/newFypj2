@@ -15,19 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
-        <activity android:name=".Results">
-        </activity>
-        <activity android:name=".QrConsumer">
-
-        </activity>
-        <activity android:name=".HomePage">
+        <activity android:name=".Customization">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".Statistics"/>-->
+        <activity android:name=".QrConsumer"/>
+        <activity android:name=".Results"/>
+        <activity android:name=".Analysis"/>
+        <activity android:name=".ViewAnalytics"/>
+        <activity android:name=".Statistics"/>
+<!--        <activity android:name=".Customization"/>-->
+        <activity android:name=".BatchProcessing"/>
+        <activity android:name=".BatchDetails"/>
 
     </application>
 

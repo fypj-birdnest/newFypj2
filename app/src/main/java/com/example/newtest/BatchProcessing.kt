@@ -15,7 +15,13 @@ import kotlin.collections.HashMap
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_customization.*
+import kotlinx.android.synthetic.main.bottom_nav.*
 import java.lang.Exception
 
 
@@ -23,9 +29,76 @@ class BatchProcessing : AppCompatActivity(){
 
     var sdate:String? = null
 
+//    val manager = supportFragmentManager
+//
+//    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item->
+//        when(item.itemId){
+//            R.id.authenticate_EBN ->{
+//                createFragmentOne()
+//                return@OnNavigationItemSelectedListener true
+//            }
+//            R.id.EBN_analytics->{
+//                createFragmentTwo()
+//                return@OnNavigationItemSelectedListener true
+//            }
+//        }
+//        false
+//    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.bottom_nav_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.authenticate_EBN -> {
+                authenticate_EBN()
+                true
+            }
+            R.id.EBN_analytics -> {
+                EBN_analytics()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun authenticate_EBN(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+
+    }
+
+    fun EBN_analytics(){
+        val intent = Intent(this, ViewAnalytics::class.java)
+        startActivity(intent)
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_batchprocessing)
+
+        //Start button
+        //Needs update because of batch ID
+        start.setOnClickListener {
+            val intent = Intent(this, BatchDetails::class.java)
+            startActivity(intent)
+
+        }
+        //Skip button
+        skip.setOnClickListener {
+            val intent = Intent(this, BatchDetails::class.java)
+            startActivity(intent)
+        }
+
+//        createFragmentOne()
+//        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val db = FirebaseFirestore.getInstance()
 
         val store = findViewById<Button>(R.id.start)
         store.setOnClickListener {
@@ -37,7 +110,7 @@ class BatchProcessing : AppCompatActivity(){
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        //button click to show DatePickerDialog
+        //DatePickerDialog
         pickDateTxt.setOnClickListener {
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{view, mYear, mMonth, mDay ->
                 //set to TextView
@@ -49,38 +122,61 @@ class BatchProcessing : AppCompatActivity(){
             dpd.show()
         }
 
-
-
         //Spinner for the countries
-        val locales = Locale.getAvailableLocales()
-        val countries = ArrayList<String>()
-        for (locale in locales) {
-            val country = locale.displayCountry
-            if (country.trim { it <= ' ' }.length > 0 && !countries.contains(country)) {
-                countries.add(country)
-            }
+        val adapterCountry = ArrayAdapter.createFromResource(this,
+            R.array.countries_list,android.R.layout.simple_spinner_item)
+
+        adapterCountry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        country_spinner.adapter = adapterCountry
+
+//        val locales = Locale.getAvailableLocales()
+//        val countries = ArrayList<String>()
+//        for (locale in locales) {
+//            val country = locale.displayCountry
+//            if (country.trim { it <= ' ' }.length > 0 && !countries.contains(country)) {
+//                countries.add(country)
+//            }
+//        }
+//        countries.add(0, "Please select country")
+//
+//        Collections.sort(countries)
+//        for (country in countries) {
+//            println(country)
+//        }
+//
+//        val countryAdapter = ArrayAdapter(this,
+//                android.R.layout.simple_spinner_item, countries)
+//
+//        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        // Apply the adapter to the your spinner
+//        country_spinner.setAdapter(countryAdapter)
+
+        skip.setOnClickListener {
+            val intent = Intent(this, BatchDetails::class.java)
+            startActivity(intent)
         }
-        countries.add(0, "Please select country")
 
-        Collections.sort(countries)
-
-        val countryAdapter = ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, countries)
-
-        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Apply the adapter to the your spinner
-        country_spinner.setAdapter(countryAdapter)
     }
+
+//    fun randomAlphaNumericString(desiredStrLength: Int): String { //Randomize
+//        val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+//
+//        return (1..desiredStrLength)
+//            .map{ kotlin.random.Random.nextInt(0, charPool.size) }
+//            .map(charPool::get)
+//            .joinToString("")
+//    }
 
     private fun store(){
         val db = FirebaseFirestore.getInstance()
-        val batch_id_value = findViewById<EditText>(R.id.batch_id)
+        val batch_id = findViewById<TextView>(R.id.batch_id_processing_value)
         val brand_name_value = findViewById<EditText>(R.id.brand_name)
         val country_of_origin_value = findViewById<Spinner>(R.id.country_spinner)
         val dateTv_value = findViewById<TextView>(R.id.dateTv)
         val prodNo_value = findViewById<EditText>(R.id.productNo)
 
-        val batch = batch_id_value.text.toString()
+        val batchid = batch_id.text.toString()
         val brandname = brand_name_value.text.toString()
         val country = country_of_origin_value.getSelectedItem().toString()
         val dateM = sdate
@@ -92,7 +188,7 @@ class BatchProcessing : AppCompatActivity(){
         val checkpickDateTxt = findViewById<EditText>(R.id.pickDateTxt)
         val pickDate = checkpickDateTxt.text.toString()
 
-        if(!batch.isEmpty() && !brandname.isEmpty()  && !pickDate.isEmpty()){
+        if(!brandname.isEmpty() && !pickDate.isEmpty()){
             try{
 
                 val items = hashMapOf( //rmb to include user
@@ -153,4 +249,21 @@ class BatchProcessing : AppCompatActivity(){
             Toast.makeText(this,"Please fill up the fields",Toast.LENGTH_LONG).show()
         }
     }
+
+
+//    fun createFragmentOne(){
+//        val transaction = manager.beginTransaction()
+//        val fragment = AuthenticateEBNFragment()
+//        transaction.replace(R.id.fragmentContainer,fragment)
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+//    }
+//
+//    fun createFragmentTwo(){
+//        val transaction = manager.beginTransaction()
+//        val fragment = ViewEBNFragment()
+//        transaction.replace(R.id.fragmentContainer,fragment)
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+//    }
 }

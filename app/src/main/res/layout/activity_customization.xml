@@ -45,15 +45,48 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:textStyle="bold"
                             android:text="X-Axis"
                             />
 
-                        <Spinner
-                            android:id="@+id/customization_spinner_x"
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
+                            android:text="Start: "
+                            android:layout_marginRight="5dp"
                             />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Month"
+                            />
+
+                        <Spinner
+                            android:id="@+id/month_spinner_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Year"
+                            />
+
+                        <Spinner
+                            android:id="@+id/year_spinner_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+
+<!--                        <Spinner-->
+<!--                            android:id="@+id/customization_spinner_x"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+
+<!--                            />-->
 
                     </LinearLayout>
 
@@ -64,6 +97,65 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="53dp"
+                            android:layout_marginRight="11dp"
+                            android:text="End: "
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Month"
+                            />
+
+                        <Spinner
+                            android:id="@+id/month_spinner_end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Year"
+                            />
+
+                        <Spinner
+                            android:id="@+id/year_spinner_end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp">
+
+                        <Button
+                            android:id="@+id/viewAnalysis"
+                            android:layout_width="60dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="50dp"
+                            android:background="@color/colorPrimary"
+                            android:text="Confirm"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/white"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
                             android:text="Y-Axis"
                             />
 
@@ -74,6 +166,7 @@
                             />
 
                     </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -100,8 +193,8 @@
                 </androidx.cardview.widget.CardView>
 
                 <!-- Bottom nav -->
-                <include
-                    layout="@layout/bottom_nav"/>
+                <!--                <include-->
+                <!--                    layout="@menu/bottom_nav_menu"/>-->
 
             </LinearLayout>
 

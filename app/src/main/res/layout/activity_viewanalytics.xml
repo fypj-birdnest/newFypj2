@@ -1,109 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="3"
-    android:gravity="center"
-    android:padding="10dp"
-    android:background="@color/background_color">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ViewEBNFragment">
 
     <LinearLayout
-        android:clipToPadding="false"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="match_parent"
+        android:weightSum="3"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@color/background_color">
 
-        <androidx.cardview.widget.CardView
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:layout_margin="10dp"
-            android:id="@+id/analytics_trends_cv"
+        <LinearLayout
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="10dp"
+                android:id="@+id/analytics_trends_cv"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:src="@drawable/ic_show_chart_black_24dp"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:padding="10dp"
-                    android:background="@drawable/circlebackgroundorange"
-                    />
-
-                <View
-                    android:layout_margin="5dp"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/material_blue"
-                    android:padding="10dp"
-                    />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:text="Analytics Trends"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    <ImageView
+                        android:src="@drawable/ic_show_chart_black_24dp"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:padding="10dp"
+                        android:background="@drawable/circlebackgroundorange"
+                        />
 
-            </LinearLayout>
+                    <View
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/material_blue"
+                        android:padding="10dp"
+                        />
 
-        </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:text="EBN Analytics Trends"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
 
-        <androidx.cardview.widget.CardView
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:layout_margin="10dp"
-            android:id="@+id/customization_cv"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+                </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_width="match_parent"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="10dp"
+                android:id="@+id/customization_cv"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:src="@drawable/ic_transform_black_24dp"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:padding="10dp"
-                    android:background="@drawable/circlebackgroundpurple"
-
-                    />
-
-                <View
-                    android:layout_margin="5dp"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/material_green"
-                    android:padding="10dp"
-                    />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginTop="5dp"
-                    android:text="Customization"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                    <ImageView
+                        android:src="@drawable/ic_transform_black_24dp"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:padding="10dp"
+                        android:background="@drawable/circlebackgroundpurple"
 
-            </LinearLayout>
+                        />
 
-        </androidx.cardview.widget.CardView>
+                    <View
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/material_green"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:text="EBN Customization"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+<!--    <include-->
+<!--        layout="@menu/bottom_nav_menu"/>-->
+
+</RelativeLayout>
+
+
+

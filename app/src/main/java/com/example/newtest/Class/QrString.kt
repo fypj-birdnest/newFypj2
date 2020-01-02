@@ -2,19 +2,6 @@ package com.example.newtest.Class
 
 import java.io.Serializable
 
-data class QrString(var tvalue: String?,var brand:String?,var authen:String?,var collagen:String?,var saliva:String?,var acidity:String?,var country:String?) : Serializable{
-
-
-        init {
-                this.tvalue = tvalue
-                this.authen = authen
-                this.collagen = collagen
-                this.saliva = saliva
-                this.brand = brand
-                this.acidity = acidity
-                this.country = country
-
-
-        }
-
+data class QrString(var batchId: String?,var collagen:String?,var acid:String?,var state:String?,var saliva:String?,var country:String?,var tdate:String?,var brand:String?) : Serializable{
+//batchid, collagen, acid, authen, saliva, country, date
 }

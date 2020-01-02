@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.newtest.Class.QrString
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_batchdetails.*
 import kotlinx.android.synthetic.main.activity_batchprocessing.*
@@ -53,11 +54,32 @@ class BatchDetails : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_batchdetails)
 
-        val db = FirebaseFirestore.getInstance()
 
         val store = findViewById<Button>(R.id.confirm)
+
         store.setOnClickListener {
-            view: View? -> store()
+
+            val toxic_level_value = findViewById<EditText>(R.id.toxic_level)
+            val collagen_level_value = findViewById<EditText>(R.id.collagen_level)
+            val acidity_value = findViewById<EditText>(R.id.acidity)
+            val authenticity_value = findViewById<Spinner>(R.id.authenticity)
+            val edible_saliva_value = findViewById<TextView>(R.id.edible_saliva)
+
+            val toxiclevel = toxic_level_value.text.toString()
+            val collagenlevel = collagen_level_value.text.toString()
+            val acidity = acidity_value.text.toString()
+            val authenticity = authenticity_value.getSelectedItem().toString()
+            val ediblesaliva = edible_saliva_value.text.toString()
+
+            //class will have batchid, collagen, acid, authen, saliva, country, date
+            val batchId = intent.getStringExtra("batchId")
+            val country = intent.getStringExtra("country")
+            val brand = intent.getStringExtra("brand")
+            var intent = Intent(this,QrAdmin::class.java)
+            var tQr: QrString = QrString(batchId,collagenlevel,acidity,authenticity,ediblesaliva,country,"",brand)
+            intent.putExtra("qrClass",tQr)
+            startActivity(intent)
+
         }
 
         val adapterAuthenticity = ArrayAdapter.createFromResource(this,
@@ -87,34 +109,12 @@ class BatchDetails : AppCompatActivity(){
 
             mAlertDialog.show()
         }
+
+
+
+
     }
 
-    private fun store(){
 
-        val db = FirebaseFirestore.getInstance()
 
-        val toxic_level_value = findViewById<EditText>(R.id.toxic_level)
-        val collagen_level_value = findViewById<EditText>(R.id.collagen_level)
-        val acidity_value = findViewById<EditText>(R.id.acidity)
-        val authenticity_value = findViewById<Spinner>(R.id.authenticity)
-        val edible_saliva_value = findViewById<TextView>(R.id.edible_saliva)
-
-        val toxiclevel = toxic_level_value.text.toString()
-        val collagenlevel = collagen_level_value.text.toString()
-        val acidity = acidity_value.text.toString()
-        val authenticity = authenticity_value.getSelectedItem().toString()
-        val ediblesaliva = edible_saliva_value.text.toString()
-
-        val items = hashMapOf(
-                "toxicLevel(%)" to toxiclevel,
-                "collagenLevel(%)" to collagenlevel,
-                "acidity(%)" to acidity,
-                "authenticity" to authenticity,
-                "edibleSaliva(%)" to ediblesaliva
-
-        )
-        db.collection("batchDetails").document().set(items).addOnSuccessListener { void: Void? ->
-            Toast.makeText(this, "Succeess", Toast.LENGTH_LONG).show()
-        }
-    }
 }

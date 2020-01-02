@@ -132,7 +132,7 @@ class Results : AppCompatActivity(){
         val clickHere = findViewById<Button>(R.id.viewAnalysis)
         clickHere.setOnClickListener {
             var intent = Intent(this,Analysis::class.java)
-            intent.putExtra("tQr",brandValue.text)
+            intent.putExtra("tQr",brandValue.text.toString())
             startActivity(intent)
         }
 

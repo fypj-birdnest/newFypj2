@@ -90,15 +90,13 @@ class BatchProcessing : AppCompatActivity(){
         val batch_id = findViewById<TextView>(R.id.batch_id_processing_value)
         batch_id.text = code
 
-//        createFragmentOne()
-//        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
-
+        val db = FirebaseFirestore.getInstance()
 
         val store = findViewById<Button>(R.id.start)
         store.setOnClickListener {
             view: View? -> store()
         }
+
         //Calendar
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -233,7 +231,8 @@ class BatchProcessing : AppCompatActivity(){
                 }
 
         }
-        else{
+        else
+        {
 
             Toast.makeText(this,"Please fill up the fields",Toast.LENGTH_LONG).show()
         }

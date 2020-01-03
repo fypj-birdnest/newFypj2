@@ -180,7 +180,9 @@
                     android:layout_marginBottom="20dp"
                     android:singleLine="true"
                     android:textSize="14sp"
-                    android:clickable="true"/>
+                    android:clickable="true"
+                    android:focusable="false"
+                    />
 
             </LinearLayout>
 
@@ -224,8 +226,6 @@
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="13sp" />
-
-
         </LinearLayout>
 
 <!--        <include-->

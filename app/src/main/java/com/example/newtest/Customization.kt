@@ -59,6 +59,15 @@ class Customization : AppCompatActivity(){
 //
 //        customization_spinner_x.adapter = adapterX
 
+        //spinner for data spinner
+        val adapterData = ArrayAdapter.createFromResource(this,
+            R.array.data_list, android.R.layout.simple_spinner_item)
+
+        adapterData.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        data_spinner.adapter = adapterData
+
+
         //spinner for y axis
         val adapterY = ArrayAdapter.createFromResource(this,
                 R.array.y_list, android.R.layout.simple_spinner_item)

@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppMaterialTheme">
-        <activity android:name=".Customization">
+        <activity android:name=".BatchDetails">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,9 +27,9 @@
         <activity android:name=".Analysis"/>
         <activity android:name=".ViewAnalytics"/>
         <activity android:name=".Statistics"/>
-<!--        <activity android:name=".Customization"/>-->
+        <activity android:name=".Customization"/>
         <activity android:name=".BatchProcessing"/>
-        <activity android:name=".BatchDetails"/>
+<!--        <activity android:name=".BatchDetails"/>-->
 
     </application>
 

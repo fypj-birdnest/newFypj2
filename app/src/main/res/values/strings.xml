@@ -18,6 +18,11 @@
         <item>Edible Saliva</item>
     </string-array>
 
+    <string-array name="data_list">
+        <item>Brand</item>
+        <item>Country</item>
+    </string-array>
+
 <!--    <string-array name="x_list">-->
 <!--        <item>Country</item>-->
 <!--        <item>Date</item>-->

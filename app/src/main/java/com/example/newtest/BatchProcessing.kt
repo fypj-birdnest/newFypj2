@@ -95,15 +95,13 @@ class BatchProcessing : AppCompatActivity(){
             startActivity(intent)
         }
 
-//        createFragmentOne()
-//        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         val db = FirebaseFirestore.getInstance()
 
         val store = findViewById<Button>(R.id.start)
         store.setOnClickListener {
             view: View? -> store()
         }
+
         //Calendar
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -184,7 +182,7 @@ class BatchProcessing : AppCompatActivity(){
         val country = country_of_origin_value.getSelectedItem().toString()
         val dateM = sdate
         //var prodNo = prodNo_value.text.toString()
-        var newProd = 3
+        var newProd = noofproduct.toInt()
 
         Log.d("woop",brandname)
 
@@ -247,7 +245,8 @@ class BatchProcessing : AppCompatActivity(){
                 Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
             }
         }
-        else{
+        else
+        {
 
             Toast.makeText(this,"Please fill up the fields",Toast.LENGTH_LONG).show()
         }

@@ -2,28 +2,20 @@ package com.example.newtest
 
 import android.app.DatePickerDialog
 import android.app.PendingIntent.getActivity
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_batchprocessing.*
 import java.util.*
-import kotlin.collections.HashMap
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_customization.*
-import kotlinx.android.synthetic.main.bottom_nav.*
-import java.lang.Exception
-
 
 class BatchProcessing : AppCompatActivity(){
 
@@ -66,6 +58,7 @@ class BatchProcessing : AppCompatActivity(){
         }
     }
 
+
     fun authenticate_EBN(){
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
@@ -84,21 +77,23 @@ class BatchProcessing : AppCompatActivity(){
 
         //Start button
         //Needs update because of batch ID
-        start.setOnClickListener {
-            val intent = Intent(this, BatchDetails::class.java)
-            startActivity(intent)
-
-        }
         //Skip button
         skip.setOnClickListener {
             val intent = Intent(this, BatchDetails::class.java)
             startActivity(intent)
         }
+        val chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var code = ""
+        for (i in 0..10) {
+            code += chars[Math.floor(Math.random() * chars.length).toInt()]
+        }
+        val batch_id = findViewById<TextView>(R.id.batch_id_processing_value)
+        batch_id.text = code
 
 //        createFragmentOne()
 //        bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        val db = FirebaseFirestore.getInstance()
+
 
         val store = findViewById<Button>(R.id.start)
         store.setOnClickListener {
@@ -182,24 +177,22 @@ class BatchProcessing : AppCompatActivity(){
         val brandname = brand_name_value.text.toString()
         val noofproduct = no_of_product_value.text.toString()
         val country = country_of_origin_value.getSelectedItem().toString()
-        val dateM = sdate
+        val dateM = dateTv_value.text
         //var prodNo = prodNo_value.text.toString()
-        var newProd = 3
+        var newProd = noofproduct.toInt()
 
-        Log.d("woop",brandname)
 
         val checkpickDateTxt = findViewById<EditText>(R.id.pickDateTxt)
         val pickDate = checkpickDateTxt.text.toString()
 
         if(!brandname.isEmpty() && !pickDate.isEmpty()){
-            try{
 
                 val items = hashMapOf( //rmb to include user
-                        "batchId" to batch_id,
+                        "batchId" to batchid,
                         "brand" to brandname,
                         "country" to country,
-                        "date" to "placeholderDate", //this is the scanned date for the batch
-                        "productNo" to newProd
+                        "date" to dateM, //this is the scanned date for the batch
+                        "productNo" to noofproduct
 
                 )
                 db.collection("batchProcessing").document().set(items).addOnSuccessListener{
@@ -216,14 +209,14 @@ class BatchProcessing : AppCompatActivity(){
                         var nqr = hashMapOf(
                                 "code" to code,
                                 "status" to "inactive",
-                                "batchId" to batch_id,
+                                "batchId" to batchid,
                                 "brand" to brandname,
-                                "country" to country,
-                                "date" to "placeholderD"
+                                "country" to country
+
 
                         )
                         db.collection("qr").document().set(nqr).addOnSuccessListener{
-
+                            db.collection("newQr").document().set(nqr)
                         }.addOnFailureListener {
                             exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                         }
@@ -239,19 +232,13 @@ class BatchProcessing : AppCompatActivity(){
                     exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                 }
 
-
-            }
-
-            catch(e:Exception){
-
-                Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
-            }
         }
         else{
 
             Toast.makeText(this,"Please fill up the fields",Toast.LENGTH_LONG).show()
         }
     }
+
 
 
 //    fun createFragmentOne(){

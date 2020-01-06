@@ -77,6 +77,9 @@ class Analysis : AppCompatActivity(){
         check.put("collagen",false)
         check.put("acid",false)
 
+        execPythonFunc("brandQuality5")
+        check["quality"] = true
+
         spinner?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long){
                 grapha.setImageResource(R.drawable.loading)
@@ -121,6 +124,7 @@ class Analysis : AppCompatActivity(){
             for (document in result) {
                 //Log.d("theResult", "${document.id} => ${document.data}")
                 if(theString == document.id){
+                    Log.d("theResult",document.getString("url")!! )
                     Picasso.get().invalidate(document.getString("url"))
                     Picasso
                             .get()

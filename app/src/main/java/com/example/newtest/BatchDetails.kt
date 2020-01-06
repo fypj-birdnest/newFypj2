@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -18,8 +19,6 @@ import kotlinx.android.synthetic.main.activity_batchprocessing.*
 import java.util.*
 
 class BatchDetails : AppCompatActivity(){
-
-    var ddate:String? = null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -64,6 +63,8 @@ class BatchDetails : AppCompatActivity(){
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
+        var ddate:String? = null
+
         //DatePickerDialog
         date_details.setOnClickListener {
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view, mYear, mMonth, mDay ->
@@ -81,13 +82,12 @@ class BatchDetails : AppCompatActivity(){
 
         store.setOnClickListener {
 
-            //val toxic_level_value = findViewById<EditText>(R.id.toxic_level)
+
             val collagen_level_value = findViewById<EditText>(R.id.collagen_level)
             val acidity_value = findViewById<EditText>(R.id.acidity)
             val authenticity_value = findViewById<Spinner>(R.id.authenticity)
             val edible_saliva_value = findViewById<TextView>(R.id.edible_saliva)
 
-            //val toxiclevel = toxic_level_value.text.toString()
             val dateM = ddate
             val collagenlevel = collagen_level_value.text.toString()
             val acidity = acidity_value.text.toString()
@@ -99,7 +99,7 @@ class BatchDetails : AppCompatActivity(){
             val country = intent.getStringExtra("country")
             val brand = intent.getStringExtra("brand")
             var intent = Intent(this,QrAdmin::class.java)
-            var tQr: QrString = QrString(batchId,collagenlevel,acidity,authenticity,ediblesaliva,country,"",brand, dateM)
+            var tQr: QrString = QrString(batchId,collagenlevel,acidity,authenticity,ediblesaliva,country,dateM,brand, dateM)
             intent.putExtra("qrClass",tQr)
             startActivity(intent)
 

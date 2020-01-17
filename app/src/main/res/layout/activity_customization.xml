@@ -25,7 +25,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/open_sans_semibold"
                     android:gravity="center"
-                    android:text="EBN Customization"
+                    android:text="EBN Custom Graph"
                     android:textColor="@color/colorBlack"
                     android:textSize="21sp"/>
 
@@ -38,29 +38,33 @@
                     android:layout_marginBottom="3dp"
                     >
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        android:text="X-Axis"
+                        />
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="10dp"
-                            android:textStyle="bold"
-                            android:text="X-Axis"
-                            />
-
+                        >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Start: "
-                            android:layout_marginRight="5dp"
                             />
-
+<!--                        android:layout_marginRight="5dp"-->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Month"
+                            android:text="MM"
+                            android:layout_marginLeft="10dp"
                             android:id="@+id/smonth"
                             />
 
@@ -68,11 +72,13 @@
                             android:id="@+id/month_spinner_start"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
                             />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Year"
+                            android:text="YYYY"
                             />
 
                         <Spinner
@@ -81,43 +87,46 @@
                             android:layout_height="wrap_content"
                             />
 
+                        <!--                        <Spinner-->
+                        <!--                            android:id="@+id/customization_spinner_x"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
 
-<!--                        <Spinner-->
-<!--                            android:id="@+id/customization_spinner_x"-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content"-->
-
-<!--                            />-->
+                        <!--                            />-->
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="52.5dp"
-                            android:layout_marginRight="11dp"
                             android:text="End: "
                             />
-
+<!--                        android:layout_marginLeft="52.5dp"-->
+<!--                        android:layout_marginRight="11dp"-->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Month"
+                            android:layout_marginLeft="10dp"
+                            android:text="MM"
                             />
 
                         <Spinner
                             android:id="@+id/month_spinner_end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
                             />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Year"
+                            android:text="YYYY"
                             />
 
                         <Spinner
@@ -125,6 +134,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        >
+
+
+                        <!--                        android:layout_marginLeft="95dp"-->
                     </LinearLayout>
 
 
@@ -170,23 +190,25 @@
                     </LinearLayout>
 
 
-                    <LinearLayout
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp">
+                        android:layout_marginTop="7dp"
+                        >
 
                         <Button
                             android:id="@+id/viewAnalysis"
                             android:layout_width="60dp"
                             android:layout_height="30dp"
-                            android:layout_marginLeft="300dp"
                             android:background="@color/colorPrimary"
+                            android:layout_gravity="right"
                             android:text="Confirm"
                             android:clickable="true"
                             android:textAllCaps="true"
                             android:textColor="@android:color/white"
-                            android:textSize="10sp" />
-                    </LinearLayout>
+                            android:textSize="10sp"
+                            />
+                    </FrameLayout>
 
 
                 </LinearLayout>

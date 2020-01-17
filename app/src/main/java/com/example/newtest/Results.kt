@@ -71,17 +71,20 @@ class Results : AppCompatActivity(){
 
 
 
-
+        var theCheck = false
         db.collection("qr").get().addOnSuccessListener { result ->
 
             val qrcode = intent.getStringExtra("tQr")!!
             for (document in result) {
-                Log.d("another",qrcode)
-                Log.d("theResult", "${document.id} => ${document.data}")
+//                Log.d("another",qrcode)
+//                Log.d("theResult", "${document.id} => ${document.data}")
                 if(qrcode == document.getString("code")){
+                    theCheck = true
                     brandValue.text = document.getString("brand")
                     countryOriginValue.text = document.getString("country")
                     acidityLevelValue.text = document.getString("acidity")
+                    collagenResult.text = document.getString("collagen")
+                    salivaResult.text = document.getString("saliva")
                     //insert graph code here
 
                     val data = hashMapOf(
@@ -119,6 +122,9 @@ class Results : AppCompatActivity(){
 
 
                 }
+            }
+            if(!theCheck){
+                results.text = "FAKE"
             }
 
         }.addOnFailureListener { exception ->

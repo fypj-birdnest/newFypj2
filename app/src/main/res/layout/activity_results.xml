@@ -92,7 +92,7 @@
                     <!-- Scan Detail -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
+                        android:layout_height="240dp"
                         app:cardBackgroundColor="@color/colorGrey"
                         app:cardPreventCornerOverlap="false"
                         android:layout_marginTop="10dp">
@@ -126,7 +126,6 @@
                                     android:textStyle="bold"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorBlack"
-                                    android:text="word"
                                      />
 
                             </LinearLayout>
@@ -183,7 +182,7 @@
                                     android:textStyle="bold"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorBlack"
-                                    android:text="Acidity Level(%):" />
+                                    android:text="Acidity Level(ph):" />
 
                                 <TextView
                                     android:id="@+id/acidityLevelValue"
@@ -210,17 +209,48 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
-                                    android:id="@+id/resultState"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="12sp"
                                     android:textStyle="bold"
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorBlack"
-                                    android:text="Result State:" />
+                                    android:text="Collagen(%):" />
 
                                 <TextView
-                                    android:id="@+id/resultStateValue"
+                                    android:id="@+id/collagenResult"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack" />
+
+                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/space4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13sp"
+                                android:textColor="@color/colorBlack"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:text="Saliva(%):" />
+
+                                <TextView
+                                    android:id="@+id/salivaResult"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="12sp"

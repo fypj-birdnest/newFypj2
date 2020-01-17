@@ -93,8 +93,8 @@ class QrAdmin : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
 
                     db.collection("qr").document(document.id).update(items).addOnSuccessListener {
-                        var intent = Intent(this,BatchDetails::class.java)
-
+                        var intent = Intent(this,QrFinished::class.java)
+                        intent.putExtra("qrClass",qrClass)
                         startActivity(intent)
                     }.addOnFailureListener {
                         exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()

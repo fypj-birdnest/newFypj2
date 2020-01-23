@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,9 +32,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="18dp"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:fontFamily="@font/roboto_medium"
                     android:gravity="center"
-                    android:text="EBN Batch Details"
+                    android:text="EBN Product Details"
                     android:textColor="@color/colorBlack"
                     android:textSize="21sp"
                     />
@@ -49,9 +49,9 @@
                         android:layout_height="match_parent"
                         android:layout_width="match_parent">
 
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+<!--                        <FrameLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent">-->
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -100,45 +100,6 @@
 
                                 </LinearLayout>
 
-
-
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingLeft="3dp"
-                                    android:text="Collagen Level(%): "
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="12sp" />
-
-                                <EditText
-                                    android:id="@+id/collagen_level"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="38dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:inputType="number"
-                                    android:singleLine="true"
-                                    android:textSize="14sp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingLeft="3dp"
-                                    android:text="Acidity(PH): "
-                                    android:textAllCaps="true"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="12sp" />
-
-                                <EditText
-                                    android:id="@+id/acidity"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="38dp"
-                                    android:layout_marginBottom="20dp"
-                                    android:inputType="number"
-                                    android:singleLine="true"
-                                    android:textSize="14sp" />
-
                                 <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -167,12 +128,47 @@
 
                                 </LinearLayout>
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="3dp"
+                                    android:text="Nitrate Level: "
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/collagen_level"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:textSize="14sp" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="3dp"
-                                    android:text="Edible Saliva(%): "
+                                    android:text="Arsinic Level: "
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/acidity"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="3dp"
+                                    android:text="Copper Level: "
                                     android:textAllCaps="true"
                                     android:textColor="@color/colorBlack"
                                     android:textSize="12sp" />
@@ -186,27 +182,63 @@
                                     android:singleLine="true"
                                     android:textSize="14sp" />
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="3dp"
+                                    android:text="Lead Level: "
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/lead_level"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginBottom="18dp"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="3dp"
+                                    android:text="Mercury Level: "
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="12sp" />
+
+                                <EditText
+                                    android:id="@+id/mercury_level"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="38dp"
+                                    android:layout_marginBottom="18dp"
+                                    android:inputType="number"
+                                    android:singleLine="true"
+                                    android:textSize="14sp" />
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
-                                    android:layout_marginTop="10dp">
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="30dp"
+                                    >
+<!--                                    <TextView-->
+<!--                                        android:layout_width="0dp"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_weight="0.05">-->
 
-                                    <TextView
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0.05">
-
-                                    </TextView>
+<!--                                    </TextView>-->
 
                                     <Button
                                         android:id="@+id/confirm"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="35dp"
                                         android:layout_gravity="left"
-                                        android:layout_marginLeft="30dp"
+                                        android:layout_marginLeft="100dp"
                                         android:layout_marginRight="30dp"
-                                        android:layout_weight="0.15"
                                         android:background="@color/colorPrimary"
                                         android:text="Confirm"
                                         android:textAllCaps="true"
@@ -222,11 +254,10 @@
 
                                     <Button
                                         android:id="@+id/end_batch"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="35dp"
                                         android:layout_gravity="right"
-                                        android:layout_marginRight="30dp"
-                                        android:layout_weight="0.15"
+                                        android:layout_marginRight="50dp"
                                         android:background="@color/colorPrimary"
                                         android:text="End Batch"
                                         android:textAllCaps="true"
@@ -236,14 +267,14 @@
                                     <TextView
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_weight="0.05">
+                                        android:layout_weight="0.10">
                                     </TextView>
 
                                 </LinearLayout>
 
                             </LinearLayout>
 
-                        </FrameLayout>
+<!--                        </FrameLayout>-->
 
                     </androidx.core.widget.NestedScrollView>
 
@@ -257,7 +288,7 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
 
     <!--    <include-->
     <!--        layout="@menu/bottom_nav_menu"/>-->

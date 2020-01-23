@@ -49,18 +49,18 @@ class HomePage : AppCompatActivity(){
         setContentView(R.layout.activity_homepage)
 
         authenticate_EBN_cv.setOnClickListener{
-            val intent = Intent(this, QrConsumer::class.java)
+            val intent = Intent(this, QrConsumer::class.java) //intent to QR code scanner
             startActivity(intent)
         }
 
-        view_EBN_analytics_cv.setOnClickListener{
-            val intent = Intent(this, ViewAnalytics::class.java)
-            startActivity(intent)
-        }
+//        view_EBN_analytics_cv.setOnClickListener{
+//            val intent = Intent(this, ViewAnalytics::class.java)
+//            startActivity(intent)
+//        }
 
         val clickHere = findViewById<TextView>(R.id.adminClick)
         clickHere.setOnClickListener {
-            val intent = Intent(this, BatchProcessing::class.java) //yet to create admin page
+            val intent = Intent(this, BatchProcessing::class.java) //intent to admin log in page
             startActivity(intent)
 
         }

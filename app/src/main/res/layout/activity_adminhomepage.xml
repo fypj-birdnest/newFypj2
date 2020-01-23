@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ViewEBNFragment"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,10 +18,10 @@
         android:layout_height="0dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/edit_Form_cv"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_margin="10dp"
-            android:id="@+id/analytics_trends_cv"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -40,11 +33,11 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/ic_show_chart_black_24dp"
+                    android:src="@drawable/ic_form_black_24dp"
+                    android:background="@drawable/circlebackgroundgreen"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:padding="10dp"
-                    android:background="@drawable/circlebackgroundorange"
                     />
 
                 <View
@@ -58,7 +51,7 @@
                 <TextView
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:text="Analytics Trends"
+                    android:text="Edit Form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -71,7 +64,7 @@
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_margin="10dp"
-            android:id="@+id/customization_cv"
+            android:id="@+id/view_EBN_analytics_cv"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -83,12 +76,11 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/ic_transform_black_24dp"
+                    android:src="@drawable/ic_list_black_24dp"
+                    android:background="@drawable/circlebackgroundorange"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:padding="10dp"
-                    android:background="@drawable/circlebackgroundpurple"
-
                     />
 
                 <View
@@ -102,7 +94,7 @@
                 <TextView
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:text="Customization"
+                    android:text="Batch Processing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -114,10 +106,6 @@
     </LinearLayout>
 
 </LinearLayout>
-    <include
-        layout="@layout/bottom_nav"/>
 
-</RelativeLayout>
-
-
-
+    <!--    <include-->
+    <!--        layout="@menu/bottom_nav_menu"/>-->

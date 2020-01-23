@@ -25,7 +25,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.bottom_nav.*
-
+import net.glxn.qrgen.android.QRCode
 
 class Results : AppCompatActivity(){
 
@@ -69,7 +69,8 @@ class Results : AppCompatActivity(){
         val db = FirebaseFirestore.getInstance()
         val firefunc = FirebaseFunctions.getInstance()
 
-
+        val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
+        (graph as ImageView).setImageBitmap(tbitmap)
 
         var theCheck = false
         db.collection("qr").get().addOnSuccessListener { result ->
@@ -85,7 +86,7 @@ class Results : AppCompatActivity(){
                     acidityLevelValue.text = document.getString("acidity")
                     collagenResult.text = document.getString("collagen")
                     salivaResult.text = document.getString("saliva")
-                    //insert graph code here
+
 
                     val data = hashMapOf(
                         "text"  to document.getString("brand"),
@@ -101,10 +102,12 @@ class Results : AppCompatActivity(){
                                     for (document in result) {
                                         //Log.d("theResult", "${document.id} => ${document.data}")
                                         if("brandQuality5" == document.id){
-                                            Picasso
-                                                .get()
-                                                .load(document.getString("url"))
-                                                .into(graph)
+//                                            Picasso
+//                                                .get()
+//                                                .load(document.getString("url"))
+//                                                .into(graph)
+                                            val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
+                                            (graph as ImageView).setImageBitmap(tbitmap)
                                         }
                                     }
                                 }.addOnFailureListener { exception ->

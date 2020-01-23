@@ -6,11 +6,13 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newtest.Class.QrString
+//import com.google.zxing.qrcode.encoder.QRCode
 import kotlinx.android.synthetic.main.activity_qr_finished.*
 import kotlinx.android.synthetic.main.activity_results.*
 import kotlinx.android.synthetic.main.activity_results.acidityLevelValue
 import kotlinx.android.synthetic.main.activity_results.brandValue
 import kotlinx.android.synthetic.main.activity_results.countryOrigin
+import net.glxn.qrgen.android.QRCode
 
 class QrFinished : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,8 @@ class QrFinished : AppCompatActivity(){
         acidityLevelValue.text = qrClass?.acid
         collagenLevel.text = qrClass?.collagen
         salivaLevel.text = qrClass?.saliva
+
+
 
         //Log.d("qrclassR",qrClass?.brand!!)
 

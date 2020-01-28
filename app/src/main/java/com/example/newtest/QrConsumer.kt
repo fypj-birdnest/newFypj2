@@ -51,13 +51,13 @@ class QrConsumer : AppCompatActivity(),ResultHandler {
     }
 
     fun authenticate_EBN(){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
 
     fun EBN_analytics(){
-        val intent = Intent(this, ViewAnalytics::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }

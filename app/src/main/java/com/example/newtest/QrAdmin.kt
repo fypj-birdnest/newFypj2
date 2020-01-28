@@ -63,28 +63,16 @@ class QrAdmin : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
                     var qrClass = intent.getSerializableExtra("qrClass") as? QrString
 
-                   // var batchId : Any = qrClass?.batchId!!
-
-//                    val tQr = hashMapOf(
-//                            "batchId" to qrClass.batchId,
-//                            "acidity" to qrClass.acid,
-//                            "brand" to qrClass.brand,
-//                            "collagen" to qrClass.collagen,
-//                            "country" to qrClass.country,
-//                            "date" to qrClass.tdate,
-//                            "saliva" to qrClass.saliva,
-//                            "state" to qrClass.state,
-//                            "status" to "active"
-//                    )
 
                     val items = HashMap<String, Any>(
 
                     )
-
-                    items.put("acidity", qrClass?.acid!!)
-                    items.put("collagen", qrClass.collagen!!)
-                    items.put("date", qrClass.tdate!!)
-                    items.put("saliva", qrClass.saliva!!)
+                    //var nitrate:String?,var arsinic:String?,var copper:String?,var lead:String?,var mercury:String?
+                    items.put("nitrate", qrClass?.nitrate!!)
+                    items.put("arsinic", qrClass.arsinic!!)
+                    items.put("copper", qrClass.copper!!)
+                    items.put("lead", qrClass.lead!!)
+                    items.put("mercury", qrClass.mercury!!)
                     items.put("state", qrClass.state!!)
                     items.put("status", "active")
 

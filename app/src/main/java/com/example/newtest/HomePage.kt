@@ -60,7 +60,7 @@ class HomePage : AppCompatActivity(){
 
         val clickHere = findViewById<TextView>(R.id.adminClick)
         clickHere.setOnClickListener {
-            val intent = Intent(this, BatchProcessing::class.java) //intent to admin log in page
+            val intent = Intent(this, Login::class.java) //intent to admin log in page
             startActivity(intent)
 
         }

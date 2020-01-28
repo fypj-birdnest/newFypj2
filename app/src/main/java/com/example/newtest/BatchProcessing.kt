@@ -60,13 +60,13 @@ class BatchProcessing : AppCompatActivity(){
 
 
     fun authenticate_EBN(){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
 
     fun EBN_analytics(){
-        val intent = Intent(this, ViewAnalytics::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
@@ -201,7 +201,7 @@ class BatchProcessing : AppCompatActivity(){
                         //generate the qr code
                         val chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         var code = ""
-                        for (i in 0..10) {
+                        for (i2 in 0..10) {
                             code += chars[Math.floor(Math.random() * chars.length).toInt()]
                         }
                         var nqr = hashMapOf(

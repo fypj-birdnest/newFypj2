@@ -59,7 +59,7 @@
                 <!-- Scan Detail -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="300dp"
                     app:cardBackgroundColor="@color/colorGrey"
                     app:cardPreventCornerOverlap="false"
                     android:layout_marginTop="10dp">
@@ -84,17 +84,16 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:id="@+id/acidityLevel"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
                                 android:textAllCaps="true"
                                 android:textColor="@color/colorBlack"
-                                android:text="Acidity Level(ph):" />
+                                android:text="Nitrate Level:" />
 
                             <TextView
-                                android:id="@+id/acidityLevelValue"
+                                android:id="@+id/nitrate_level_success"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
@@ -124,10 +123,10 @@
                                 android:textStyle="bold"
                                 android:textAllCaps="true"
                                 android:textColor="@color/colorBlack"
-                                android:text="Collagen:" />
+                                android:text="Arsinic Level:" />
 
                             <TextView
-                                android:id="@+id/collagenLevel"
+                                android:id="@+id/arsinic_level_success"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
@@ -156,10 +155,10 @@
                                 android:textStyle="bold"
                                 android:textAllCaps="true"
                                 android:textColor="@color/colorBlack"
-                                android:text="Saliva(%):" />
+                                android:text="Copper Level:" />
 
                             <TextView
-                                android:id="@+id/salivaLevel"
+                                android:id="@+id/copper_level_success"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
@@ -168,6 +167,74 @@
                                 android:textColor="@color/colorBlack" />
 
                         </LinearLayout>
+                        <TextView
+                            android:id="@+id/space5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorBlack"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorBlack"
+                                android:text="Lead Level:" />
+
+                            <TextView
+                                android:id="@+id/lead_level_success"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorBlack" />
+
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/space6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorBlack"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorBlack"
+                                android:text="Mercury Level:" />
+
+                            <TextView
+                                android:id="@+id/mercury_level_success"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textAllCaps="true"
+                                android:textColor="@color/colorBlack" />
+
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/space7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorBlack"/>
+
                         <Button
                             android:id="@+id/backDetails"
                             android:layout_width="wrap_content"

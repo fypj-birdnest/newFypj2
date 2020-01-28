@@ -42,13 +42,13 @@ class BatchDetails : AppCompatActivity(){
     }
 
     fun authenticate_EBN(){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
 
     fun EBN_analytics(){
-        val intent = Intent(this, ViewAnalytics::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
@@ -57,51 +57,42 @@ class BatchDetails : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_batchdetails)
 
-        //Calendar
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-
-        var ddate:String? = null
-
-        //DatePickerDialog
-        date_details.setOnClickListener {
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view, mYear, mMonth, mDay ->
-                //set to TextView
-                var displayDate = "" + mDay + "/" + (mMonth+1) + "/" + mYear
-                ddate = "" + mYear + (mMonth+1) + mDay
-                date_details.setText(displayDate)
-            }, year, month, day )
-            //show dialog
-            dpd.show()
-        }
-
-
         val store = findViewById<Button>(R.id.confirm)
 
         store.setOnClickListener {
 
 
-            val collagen_level_value = findViewById<EditText>(R.id.collagen_level)
-            val acidity_value = findViewById<EditText>(R.id.acidity)
+            val nitrate_level_value = findViewById<EditText>(R.id.nitrate_level)
+            val arsinic_level_value = findViewById<EditText>(R.id.arsinic_level)
+            val copper_level_value = findViewById<EditText>(R.id.copper_level)
+            val lead_level_value = findViewById<EditText>(R.id.lead_level)
+            val mercury_level_value = findViewById<EditText>(R.id.mercury_level)
+
             val authenticity_value = findViewById<Spinner>(R.id.authenticity)
-            val edible_saliva_value = findViewById<TextView>(R.id.edible_saliva)
 
-            val dateM = ddate
-            val collagenlevel = collagen_level_value.text.toString()
-            val acidity = acidity_value.text.toString()
+
+
+            val nitrateLevel = nitrate_level_value.text.toString()
+            val arsinicLevel = arsinic_level_value.text.toString()
+            val copperLevel = copper_level_value.text.toString()
+            val leadLevel = lead_level_value.text.toString()
+            val mercuryLevel = mercury_level_value.text.toString()
+
             val authenticity = authenticity_value.getSelectedItem().toString()
-            val ediblesaliva = edible_saliva_value.text.toString()
+            if(nitrateLevel == "" || arsinicLevel == "" ||nitrateLevel == "" ||copperLevel == "" ||nitrateLevel == "" ||leadLevel == "" ||mercuryLevel == "" ){
+                Toast.makeText(this,"Please fill up all the fields", Toast.LENGTH_LONG).show()
+            }else{
+                //class will have batchid, collagen, acid, authen, saliva, country, date
+                val batchId = intent.getStringExtra("batchId")
+                val country = intent.getStringExtra("country")
+                val brand = intent.getStringExtra("brand")
+                var intent = Intent(this,QrAdmin::class.java)
+                var tQr = QrString(batchId,nitrateLevel,arsinicLevel,copperLevel,leadLevel,mercuryLevel,country,brand,authenticity)
+                intent.putExtra("qrClass",tQr)
+                startActivity(intent)
+            }
 
-            //class will have batchid, collagen, acid, authen, saliva, country, date
-            val batchId = intent.getStringExtra("batchId")
-            val country = intent.getStringExtra("country")
-            val brand = intent.getStringExtra("brand")
-            var intent = Intent(this,QrAdmin::class.java)
-            var tQr: QrString = QrString(batchId,collagenlevel,acidity,authenticity,ediblesaliva,country,dateM,brand, dateM)
-            intent.putExtra("qrClass",tQr)
-            startActivity(intent)
+
 
         }
 

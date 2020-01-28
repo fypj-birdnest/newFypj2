@@ -51,13 +51,13 @@ class Results : AppCompatActivity(){
     }
 
     fun authenticate_EBN(){
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
 
     fun EBN_analytics(){
-        val intent = Intent(this, ViewAnalytics::class.java)
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
 
     }
@@ -67,10 +67,37 @@ class Results : AppCompatActivity(){
         setContentView(R.layout.activity_results)
 
         val db = FirebaseFirestore.getInstance()
-        val firefunc = FirebaseFunctions.getInstance()
 
-        val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
-        (graph as ImageView).setImageBitmap(tbitmap)
+        db.collection("tableValue").get().addOnSuccessListener { result ->
+
+            for(document in result){
+
+                if(document.id == "nitrate"){
+                    tableNitrate.text = document.getString("value")
+
+                }
+                else if(document.id == "arsinic"){
+                    tableArsinic.text = document.getString("value")
+
+                }
+                else if(document.id == "copper"){
+                    tableCopper.text = document.getString("value")
+
+                }
+                else if(document.id == "lead"){
+                    tableLead.text = document.getString("value")
+
+                }
+                else{
+                    tableMercury.text = document.getString("value")
+
+                }
+            }
+        }
+
+
+        //val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
+        //(graph as ImageView).setImageBitmap(tbitmap)
 
         var theCheck = false
         db.collection("qr").get().addOnSuccessListener { result ->
@@ -79,67 +106,28 @@ class Results : AppCompatActivity(){
             for (document in result) {
 //                Log.d("another",qrcode)
 //                Log.d("theResult", "${document.id} => ${document.data}")
-                if(qrcode == document.getString("code")){
+                if(qrcode == document.getString("code") && document.getString("status") == "active"){
                     theCheck = true
                     brandValue.text = document.getString("brand")
                     countryOriginValue.text = document.getString("country")
-                    acidityLevelValue.text = document.getString("acidity")
                     collagenResult.text = document.getString("collagen")
-                    salivaResult.text = document.getString("saliva")
-
-
-                    val data = hashMapOf(
-                        "text"  to document.getString("brand"),
-                        "push" to true
-                    )
-
-                    firefunc.getHttpsCallable("brandQuality5").call(data)
-                        .addOnCompleteListener { task ->
-
-                            if (!task.isSuccessful)
-                            {
-                                db.collection("graphImages").get().addOnSuccessListener { result ->
-                                    for (document in result) {
-                                        //Log.d("theResult", "${document.id} => ${document.data}")
-                                        if("brandQuality5" == document.id){
-//                                            Picasso
-//                                                .get()
-//                                                .load(document.getString("url"))
-//                                                .into(graph)
-                                            val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
-                                            (graph as ImageView).setImageBitmap(tbitmap)
-                                        }
-                                    }
-                                }.addOnFailureListener { exception ->
-                                    Log.w("GetDocError", "Error getting documents.", exception)
-                                }
-
-                                val e = task.exception
-                                if (e is FirebaseFunctionsException)
-                                {
-                                    Log.d("error in calling func", "Result3: " + e.code + e.details)
-                                }
-                            }
-                            return@addOnCompleteListener
-                        }
-
-
+                    resultNitrate.text = document.getString("nitrate")
+                    resultArsinic.text = document.getString("arsinic")
+                    resultCopper.text = document.getString("copper")
+                    resultLead.text = document.getString("lead")
+                    resultMercury.text = document.getString("mercury")
+                    results.text = document.getString("state")
                 }
             }
             if(!theCheck){
-                results.text = "FAKE"
+                results.text = "FAKE QR"
             }
 
         }.addOnFailureListener { exception ->
             Log.w("GetDocError", "Error getting documents.", exception)
         }
 
-        val clickHere = findViewById<Button>(R.id.viewAnalysis)
-        clickHere.setOnClickListener {
-            var intent = Intent(this,Analysis::class.java)
-            intent.putExtra("tQr",brandValue.text.toString())
-            startActivity(intent)
-        }
+
 
     }
 

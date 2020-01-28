@@ -33,6 +33,7 @@
         <activity android:name=".Customization"/>
         <activity android:name=".BatchProcessing"/>
         <activity android:name=".QrFinished"/>
+        <activity android:name=".Login"/>
         <activity android:name=".QrAdmin"></activity>
 <!--        <activity android:name=".BatchDetails"/>-->
 

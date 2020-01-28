@@ -57,9 +57,9 @@
     </string-array>
 
     <string-array name="authenticity_list">
-        <item>real</item>
-        <item>fake</item>
-        <item>adulterated</item>
+        <item>REAL</item>
+        <item>FAKE</item>
+        <item>ADULTERATED</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

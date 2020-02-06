@@ -5,6 +5,7 @@ import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +17,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.*
+import androidx.print.PrintHelper
+import net.glxn.qrgen.android.QRCode
 
 class BatchProcessing : AppCompatActivity(){
 
@@ -147,6 +150,9 @@ class BatchProcessing : AppCompatActivity(){
 
         skip.setOnClickListener {
             val intent = Intent(this, BatchDetails::class.java)
+            intent.putExtra("batchId","")
+            intent.putExtra("country","")
+            intent.putExtra("brand","")
             startActivity(intent)
         }
 
@@ -160,6 +166,8 @@ class BatchProcessing : AppCompatActivity(){
 //            .map(charPool::get)
 //            .joinToString("")
 //    }
+
+
 
     private fun store(){
         val db = FirebaseFirestore.getInstance()
@@ -218,14 +226,24 @@ class BatchProcessing : AppCompatActivity(){
                         }.addOnFailureListener {
                             exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                         }
+                        this.also { context ->
+                            PrintHelper(context).apply {
+
+                            }.also { printHelper ->
+                                val bitmap = QRCode.from(code).withSize(50,50).bitmap()
+                                printHelper.printBitmap("droids.jpg - test print", bitmap)
+                            }
+                        }
                     }
+
+
 
 
                     var intent = Intent(this,BatchDetails::class.java)
                     intent.putExtra("batchId",batchid)
                     intent.putExtra("country",country)
                     intent.putExtra("brand",brandname)
-                    startActivity(intent)
+                    //startActivity(intent)
                 }.addOnFailureListener {
                     exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                 }

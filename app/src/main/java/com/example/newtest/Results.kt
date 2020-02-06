@@ -96,7 +96,7 @@ class Results : AppCompatActivity(){
         }
 
 
-        //val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
+        val tbitmap = QRCode.from("testing").withSize(500,500).bitmap()
         //(graph as ImageView).setImageBitmap(tbitmap)
 
         var theCheck = false

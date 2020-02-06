@@ -1,12 +1,14 @@
 package com.example.newtest
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.print.PrintHelper
 import kotlinx.android.synthetic.main.activity_homepage.*
 
 class HomePage : AppCompatActivity(){

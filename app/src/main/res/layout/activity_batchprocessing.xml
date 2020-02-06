@@ -214,7 +214,7 @@
                         android:layout_weight="0.5"
                         android:layout_gravity="left"
                         android:background="@color/colorPrimary"
-                        android:text="Start"
+                        android:text="Print"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="13sp"
@@ -228,7 +228,7 @@
                         android:layout_weight="0.5"
                         android:layout_gravity="right"
                         android:background="@color/colorPrimary"
-                        android:text="Skip"
+                        android:text="Next"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="13sp" />

@@ -202,7 +202,7 @@
                                         android:layout_marginLeft="100dp"
                                         android:layout_marginRight="30dp"
                                         android:background="@color/colorPrimary"
-                                        android:text="Confirm"
+                                        android:text="Next"
                                         android:textAllCaps="true"
                                         android:textColor="@android:color/white"
                                         android:textSize="13sp" />

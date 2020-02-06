@@ -22,9 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BatchDetails">
-
-        </activity>
+        <activity android:name=".BatchDetails"/>
         <activity android:name=".QrConsumer"/>
         <activity android:name=".Results"/>
         <activity android:name=".Analysis"/>
@@ -34,8 +32,12 @@
         <activity android:name=".BatchProcessing"/>
         <activity android:name=".QrFinished"/>
         <activity android:name=".Login"/>
-        <activity android:name=".QrAdmin"></activity>
-<!--        <activity android:name=".BatchDetails"/>-->
+        <activity android:name=".QrAdmin"/>
+        <activity android:name=".AdminHomePage"/>
+        <activity android:name=".AdminSelection"/>
+        <activity android:name=".AdminScanResults"/>
+
+        <!--        <activity android:name=".BatchDetails"/>-->
 
     </application>
 

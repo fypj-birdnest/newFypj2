@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center"
+                    android:text="EBN Scan Results"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="21sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    >
+
+                    <!--        <LinearLayout-->
+                    <!--            android:layout_width="match_parent"-->
+                    <!--            android:layout_height="match_parent"-->
+                    <!--            android:orientation="vertical">-->
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp">
+
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:background="@color/colorDarkGrey"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Acceptable (PPM)"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:background="@color/colorDarkGrey"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text="Actual (PPM)"-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:background="@color/colorDarkGrey"-->
+                            <!--                        />-->
+                        </TableRow>
+
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:text="Nitrate"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                />
+                            <EditText
+                                android:id="@+id/tableNitrate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="40"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=""-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:layout_marginRight="1dp"-->
+                            <!--                        android:layout_marginBottom="1dp"-->
+                            <!--                        android:background="@color/colorWhite"-->
+                            <!--                        android:id="@+id/resultNitrate"-->
+                            <!--                        />-->
+
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:text="Arsinic"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                />
+                            <EditText
+                                android:id="@+id/tableArsinic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="40"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=""-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:background="@color/colorWhite"-->
+                            <!--                        android:layout_marginRight="1dp"-->
+                            <!--                        android:layout_marginBottom="1dp"-->
+                            <!--                        android:id="@+id/resultArsinic"-->
+                            <!--                        />-->
+
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:text="Copper"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                />
+
+                            <EditText
+                                android:id="@+id/tableCopper"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:text="40"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=""-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:background="@color/colorWhite"-->
+                            <!--                        android:layout_marginRight="1dp"-->
+                            <!--                        android:layout_marginBottom="1dp"-->
+                            <!--                        android:id="@+id/resultCopper"-->
+                            <!--                        />-->
+
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:text="Lead"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                />
+
+                            <EditText
+                                android:id="@+id/tableLead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:text="40"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=""-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:background="@color/colorWhite"-->
+                            <!--                        android:layout_marginRight="1dp"-->
+                            <!--                        android:layout_marginBottom="1dp"-->
+                            <!--                        android:id="@+id/resultLead"-->
+                            <!--                        />-->
+
+                        </TableRow>
+                        <TableRow>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:text="Mercury"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                />
+                            <EditText
+                                android:id="@+id/tableMercury"
+                                android:layout_width="wrap_content"
+                                android:layout_height="60dp"
+                                android:textStyle="bold"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="40"
+                                />
+                            <!--                    <TextView-->
+                            <!--                        android:layout_width="wrap_content"-->
+                            <!--                        android:layout_height="wrap_content"-->
+                            <!--                        android:text=""-->
+                            <!--                        android:textStyle="bold"-->
+                            <!--                        android:layout_weight="1"-->
+                            <!--                        android:gravity="center"-->
+                            <!--                        android:background="@color/colorWhite"-->
+                            <!--                        android:layout_marginRight="1dp"-->
+                            <!--                        android:layout_marginBottom="1dp"-->
+                            <!--                        android:id="@+id/resultMercury"-->
+                            <!--                        />-->
+
+                        </TableRow>
+
+                    </TableLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/confirm_scan_results"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:text="Confirm"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

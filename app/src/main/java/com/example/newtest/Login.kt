@@ -27,7 +27,7 @@ class Login : AppCompatActivity(){
                     if (username == document.getString("username")) {
                         check = true
                         if (password == document.getString("password")) {
-                            var intent = Intent(this,BatchProcessing::class.java)
+                            var intent = Intent(this,AdminHomePage::class.java)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this,"Incorrect password", Toast.LENGTH_LONG).show()

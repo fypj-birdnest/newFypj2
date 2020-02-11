@@ -37,6 +37,7 @@
         <activity android:name=".AdminSelection"/>
         <activity android:name=".AdminScanResults"/>
 
+
         <!--        <activity android:name=".BatchDetails"/>-->
 
     </application>

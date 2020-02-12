@@ -49,14 +49,14 @@ class BatchProcessing : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            R.id.authenticate_EBN -> {
+            R.id.logout -> {
                 authenticate_EBN()
                 true
             }
-            R.id.EBN_analytics -> {
-                EBN_analytics()
-                true
-            }
+//            R.id.EBN_analytics -> {
+//                EBN_analytics()
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -68,11 +68,11 @@ class BatchProcessing : AppCompatActivity(){
 
     }
 
-    fun EBN_analytics(){
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-
-    }
+//    fun EBN_analytics(){
+//        val intent = Intent(this, HomePage::class.java)
+//        startActivity(intent)
+//
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,6 +90,7 @@ class BatchProcessing : AppCompatActivity(){
         for (i in 0..10) {
             code += chars[Math.floor(Math.random() * chars.length).toInt()]
         }
+
         val batch_id = findViewById<TextView>(R.id.batch_id_processing_value)
         batch_id.text = code
 

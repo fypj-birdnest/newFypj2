@@ -88,7 +88,7 @@ class BatchDetails : AppCompatActivity(){
                 val brand = intent.getStringExtra("brand")
                 var intent = Intent(this,QrAdmin::class.java)
                 var tQr = QrString(batchId,nitrateLevel,arsinicLevel,copperLevel,leadLevel,mercuryLevel,country,brand,authenticity)
-                intent.putExtra("qrClass",tQr)
+                intent.putExtra("qrClass",tQr) //Send all the data to QrAdmin
                 startActivity(intent)
             }
 

@@ -201,7 +201,7 @@ class BatchProcessing : AppCompatActivity(){
                         "productNo" to noofproduct
 
                 )
-                db.collection("batchProcessing").document().set(items).addOnSuccessListener{
+                db.collection("batchProcessing").document().set(items).addOnSuccessListener{ //Storing generated QR Code into "batchProcessing" collection
                     void: Void? -> Toast.makeText(this, "Succeess", Toast.LENGTH_LONG).show()
 
 
@@ -226,7 +226,7 @@ class BatchProcessing : AppCompatActivity(){
                         }.addOnFailureListener {
                             exception: java.lang.Exception ->  Toast.makeText(this, exception.toString(), Toast.LENGTH_LONG).show()
                         }
-                        this.also { context ->
+                        this.also { context -> //Printing
                             PrintHelper(context).apply {
 
                             }.also { printHelper ->

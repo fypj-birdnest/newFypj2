@@ -14,8 +14,8 @@ class AdminScanResults : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adminscanresults)
 
-        val db = FirebaseFirestore.getInstance()
-        db.collection("tableValue").get().addOnSuccessListener { result ->
+        val db = FirebaseFirestore.getInstance() //Initializing firestore
+        db.collection("tableValue").get().addOnSuccessListener { result -> //"tableValue" collection from firestore
             for (document in result) {
 //                Log.d("another",qrcode)
 //                Log.d("theResult", "${document.id} => ${document.data}")

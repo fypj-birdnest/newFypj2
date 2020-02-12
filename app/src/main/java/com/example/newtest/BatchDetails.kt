@@ -29,14 +29,14 @@ class BatchDetails : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
-            R.id.authenticate_EBN -> {
+            R.id.logout -> {
                 authenticate_EBN()
                 true
             }
-            R.id.EBN_analytics -> {
-                EBN_analytics()
-                true
-            }
+//            R.id.EBN_analytics -> {
+//                EBN_analytics()
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -47,11 +47,11 @@ class BatchDetails : AppCompatActivity(){
 
     }
 
-    fun EBN_analytics(){
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-
-    }
+//    fun EBN_analytics(){
+//        val intent = Intent(this, HomePage::class.java)
+//        startActivity(intent)
+//
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +68,7 @@ class BatchDetails : AppCompatActivity(){
             val lead_level_value = findViewById<EditText>(R.id.lead_level)
             val mercury_level_value = findViewById<EditText>(R.id.mercury_level)
 
+
             val authenticity_value = findViewById<Spinner>(R.id.authenticity)
 
 
@@ -80,7 +81,7 @@ class BatchDetails : AppCompatActivity(){
 
             val authenticity = authenticity_value.getSelectedItem().toString()
             if(nitrateLevel == "" || arsinicLevel == "" ||nitrateLevel == "" ||copperLevel == "" ||nitrateLevel == "" ||leadLevel == "" ||mercuryLevel == "" ){
-                Toast.makeText(this,"Please fill up all the fields", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Please fill up all fields", Toast.LENGTH_LONG).show()
             }else{
                 //class will have batchid, collagen, acid, authen, saliva, country, date
                 val batchId = intent.getStringExtra("batchId")
